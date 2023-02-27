@@ -1,0 +1,405 @@
+---
+title: "Data curation, coding style and sharing data"
+format: 
+  revealjs:
+    theme: moon
+    logo: "img/Leaf_LN.png"
+execute:
+  echo: true
+editor: visual
+---
+
+## 
+
+![](img/QRcode.png)
+
+-   https://github.com/DrMattG/Oikos_Norway_2023
+-   .../blob/main/messy_data.rds
+-   .../blob/main/notReproducible.qmd
+
+## ![](img/Ecology_data.jfif)
+
+## The Data life-cycle
+
+[![](img/data%20lifecycle.png){fig-align="center"}](https://www.britishecologicalsociety.org/wp-content/uploads/Publ_Data-Management-Booklet.pdf)
+
+## Data handling & curation
+
+Managing the "data life-cycle" within and beyond a project.
+
+-   creating data
+-   organising data
+-   maintaining data
+
+## Data cleaning vs Data wrangling
+
+***Data cleaning*** is the process of removing incorrect, duplicate, or otherwise erroneous data from a dataset
+
+***Data wrangling*** changing the format to make it more useful for your analysis
+
+## Some R Functions that help data cleaning
+
+### {janitor}
+
+```{r echo=TRUE}
+library(tidyverse)
+library(palmerpenguins)
+library(janitor)
+
+palmerpenguins::penguins_raw |>  names()
+
+```
+
+```{r}
+janitor::clean_names(palmerpenguins::penguins_raw) |>  names()
+```
+
+## 
+
+### {dplyr}
+
+```{r}
+clean_penguins<-janitor::clean_names(palmerpenguins::penguins_raw)
+
+dplyr::glimpse(clean_penguins)
+```
+
+## 
+
+### {skimr}
+
+```{r}
+out<-skimr::skim(palmerpenguins::penguins_raw)
+out
+```
+
+## 
+
+### {dplyr}
+
+```{r}
+#Deduplication 
+dim(clean_penguins)
+clean_penguins_dup<-clean_penguins  |>  slice(rep(1:n(), each = 3)) 
+dim(clean_penguins_dup)
+clean_penguins_undup<-distinct(clean_penguins_dup)
+dim(clean_penguins_undup)
+
+```
+
+## 
+
+### {naniar}
+
+```{r}
+clean_penguins |> naniar::vis_miss()
+```
+
+## Data validation
+
+```{r}
+library(data.validator)
+
+report <- data_validation_report()
+
+between <- function(a, b) {
+  function(x) { a <= x && x <= b }
+}
+
+validate(iris, name = "Verifying flower dataset") |>
+  validate_if(Sepal.Length > 0, 
+              description = "Sepal length is greater than 0") |>
+  validate_cols(between(0, 4), 
+                Sepal.Width, 
+                description = "Sepal width is between 0 and 4") |>
+  add_results(report)
+
+#save_report(report)
+#browseURL("validation_report.html")
+```
+
+## 
+
+```{r}
+print(report)
+```
+
+## Data wrangling
+
+![](img/Longwide.png)
+
+## Transform to long format
+
+```{r}
+library(tidyverse)
+# this avoids tidyverse conflicts with the base function filter
+conflicted::conflict_prefer("filter", "dplyr")
+# Pivot longer 
+penguins_long<-penguins |> 
+  pivot_longer(contains("_"),
+               names_to = c("part", "measure" , "unit"),
+               names_sep = "_")
+
+penguins_long
+
+```
+
+## Transform to wide format
+
+```{r}
+penguins_long |> 
+  pivot_wider(names_from = species, 
+              values_from = value)
+
+```
+
+## What's going on?
+
+No identifier for each observation so R puts all the values in a list. To solve this we need a unique row id.
+
+```{r}
+penguins_long |> 
+  mutate(sample=row_number()) |> 
+  pivot_wider(names_from = species, 
+              values_from = value)
+
+```
+
+## Tidy data
+
+![](img/data-science.png)
+
+## Tidy data principles
+
+![](img/tidy-1.png)
+
+## Messy data
+
+Look at the messy data dataset. How would you go about cleaning this dataset?
+
+```{r}
+messy_data <- readRDS("C:/Users/matthew.grainger/Documents/Projects_in_development/Oikos_Norway_2023/messy_data.rds")
+
+messy_data |> data.table::data.table()
+
+```
+
+## Code style
+
+What are attributes of good code?
+
+Have a look at the "notReproducible.qmd" file
+
+## Tidyverse style guide
+
+["Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."](https://style.tidyverse.org/)
+
+```{r, eval=FALSE}
+
+# Examples
+day_one # Good
+DayOne # Bad
+# Avoid names of common functions
+T <- FALSE # Bad
+c <- 10 # Bad
+mean <- function(x) sum(x) # Bad
+# Space after a comma
+x[, 1] # Good
+x[,1] # Bad
+# space after () in functions
+function(x) {}# Good
+function (x) {} # Bad
+function(x){} # Bad
+
+```
+
+## Useful package for style
+
+```{r}
+library("styler")
+style_text("a=3; 2", scope = "tokens")
+
+
+```
+
+## What I think...
+
+1.  It runs (on your computer)
+
+2.  It runs (on my computer - without me having to do anything/much)
+
+3.  It does what you expect it to do (even after 5 years)
+
+4.  It is documented in some way
+
+## What Jenny Bryan thinks
+
+If the first line of your R script is
+
+setwd("C:\Users\jenny\path\that\only\I\have")
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+
+If the first line of your R script is
+
+rm(list = ls())
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+
+## Sharing data
+
+![](img/dates_standards.png)
+
+One of the biggest barriers to sharing data is a lack of standardisation and metadata
+
+## Standards
+
+-   Standards provide the "rules" and "protocols" to share information
+-   Standards enable interoperability of your data
+-   Even if not sharing data openly (immediately) this is useful for working with collaborators
+-   Sharing data depends on the consistent use of agreed standards.
+
+## 
+
+![](img/Monster1.png)
+
+## 
+
+![](img/Monster2.png)
+
+## 
+
+![](img/Monster3.png)
+
+## Darwin Core
+
+![](img/DWC.png)
+
+## DWC-a
+
+![](img/DWC2.png)
+
+## LivingNorwayR
+
+![](img/LivingNorwayR.png)
+
+## Using open data
+
+![Culina, et al. Navigating the unfolding open data landscape in ecology and evolution. Nat Ecol Evol 2, 420--426 (2018). https://doi.org/10.1038/s41559-017-0458-2](img/41559_2017_458_Fig1_HTML.webp)
+
+## 
+
+```{=html}
+<iframe width="780" height="500"src="https://data.livingnorway.no/dataset?key=aea17af8-5578-4b04-b5d3-7adf0c5a1e60"></iframe>
+```
+## Getting data through R (one way)
+
+```{r}
+library(tidyverse)
+library(RJSONIO)
+library(EML)
+## Using open ecology data
+## Using packages other than the LivingNorwayR package
+datasetKey <- "84b9a51f-ec2e-41dc-9d7a-1e3aa411b939"
+dataset <- RJSONIO::fromJSON(paste0("http://api.gbif.org/v1/dataset/",
+                                    datasetKey,"/endpoint"))
+endpoint_url <- dataset[[1]]$url
+datasetName=sub(".*r=", "", endpoint_url)
+datsetName=sub("&v*.","", datasetName)
+tempDirLoc <- tempdir()
+localDataLoc <- file.path(tempDirLoc,datasetName)
+download.file(endpoint_url, localDataLoc, mode = "wb")
+
+```
+
+## 
+
+```{r}
+## list the files in the archive
+unzip(zipfile = localDataLoc, list = TRUE)
+occurence <- as_tibble(read.table(unz(localDataLoc, "occurrence.txt"),
+                                  header=T,sep="\t", quote=""))
+measure <- as_tibble(read.table(unz(localDataLoc, "measurementorfact.txt"),
+                                header=T,sep="\t", quote=""))
+## You need to unzip the eml before read_eml() will work
+f <- unzip(localDataLoc, "eml.xml")
+eml=EML::read_eml(f)
+
+```
+
+## 
+
+```{r}
+occurence
+
+```
+
+## 
+
+```{r}
+measure 
+
+```
+
+## 
+
+```{r}
+eml$additionalMetadata$metadata$gbif$citation
+eml$dataset$title
+eml$dataset$abstract
+```
+
+## 
+
+```{r}
+# join measure to occurrence 
+joined_dat<-occurence |> 
+  left_join(measure)
+
+joined_dat |> 
+ data.table::data.table()
+
+
+
+```
+
+## 
+
+```{r}
+# Model weight by length
+# need to fix the errors (wrong cols)
+joined_dat_clean<-joined_dat |> 
+  mutate(Value=case_when(
+    measurementType=="Weight"~ measurementUnit,
+    measurementType=="Length"~ measurementValue),
+    unit=case_when(
+      measurementType=="Weight"~ measurementValue,
+      measurementType=="Length"~ measurementUnit
+      
+    )) |> 
+  mutate(measurementValue=Value,
+         measurementUnit=unit) |> 
+  select(-c(Value, unit))
+
+joined_dat_clean|> 
+ data.table::data.table()
+
+```
+
+## 
+
+```{r}
+weight_length<-joined_dat_clean |> 
+  filter(vernacularName=="Laks") |> 
+  select(id,
+         measurementType, measurementValue) |> 
+  pivot_wider(id, names_from =measurementType, values_from = measurementValue )
+
+weight_length |> 
+  mutate(Weight=as.numeric(Weight)) |> 
+  mutate(Length=as.numeric(Length)) |> 
+  ggplot(aes(Weight, Length)) +
+  geom_point(colour="darksalmon")+
+  theme_classic()
+
+```
