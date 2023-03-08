@@ -178,7 +178,7 @@ penguins_long |>
 Look at the messy data dataset. How would you go about cleaning this dataset?
 
 ```{r}
-messy_data <- readRDS("C:/Users/matthew.grainger/Documents/Projects_in_development/Oikos_Norway_2023/messy_data.rds")
+messy_data <- readRDS(paste0(here::here(),"/NOS2023/Data_handling/messy_data.rds"))
 
 messy_data |> data.table::data.table()
 
