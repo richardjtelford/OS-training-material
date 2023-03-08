@@ -11,7 +11,7 @@ Clone this repository by using the following command:
 #install.packages(usethis)
 library(usethis)
 
-create_from_github("Open-Science-Course/OS-course-teaching-material")
+create_from_github("Open-Science-Course/OS-training-material")
 ```
 
 Go to the folder from your course or workshop (see content below). You
