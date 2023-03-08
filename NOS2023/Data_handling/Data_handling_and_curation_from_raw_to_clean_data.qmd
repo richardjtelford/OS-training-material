@@ -2,6 +2,7 @@
 title: "Data curation, coding style and sharing data"
 format: 
   revealjs:
+    embed-resources: true
     theme: moon
     logo: "img/Leaf_LN.png"
 execute:
