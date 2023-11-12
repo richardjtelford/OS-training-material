@@ -78,9 +78,11 @@ out
 
 ```{r}
 #Deduplication  
-data<-tibble(Day=c("Monday", "Tuesday","Wednesday", "Wednesday"), Person=c("Becks", "Amy", "Matt", "Matt"))
+data<-tibble(Day=c("Monday", "Tuesday","Wednesday", "Wednesday"), 
+             Person=c("Becks", "Amy", "Matt", "Matt"))
 data
 data |> dplyr::distinct()
+
 ```
 
 ## 
@@ -180,7 +182,7 @@ Missing data patterns - MCAR
 | 4              | 250      |
 | 5              | 55       |
 
-: MCAR {#tbl-MAR}
+: MAR {#tbl-MAR}
 
 Missing data patterns - MAR
 :::
@@ -206,7 +208,7 @@ Missing data patterns - MAR
 | 4              |          |
 | 5              | 55       |
 
-: MCAR {#tbl-MNAR}
+: MNAR {#tbl-MNAR}
 
 Missing data patterns - MNAR
 :::
@@ -223,17 +225,24 @@ library(palmerpenguins)
 penguins_complete<-penguins |> 
   drop_na()
 
-miss_penguins_MCAR<-missMethods::delete_MCAR(penguins_complete, 0.3, "flipper_length_mm") 
+miss_penguins_MCAR<-missMethods::delete_MCAR(penguins_complete, 
+                                             0.3, "flipper_length_mm") 
 # create a pattern of missingness with censoring 
 #(missing value in flipper_length if body_mass is below 30% quantile of body_mass)
 
-miss_penguins_MAR<-missMethods::delete_MAR_censoring(penguins_complete, 0.3, "flipper_length_mm", "body_mass_g") 
+miss_penguins_MAR<-missMethods::delete_MAR_censoring(penguins_complete,
+                                                     0.3, "flipper_length_mm", "body_mass_g") 
 # create a pattern of missingness with censoring 
 #(missing value in flipper_length if flipper_length is below 30% quantile) 
 
-miss_penguins_MNAR<-missMethods::delete_MNAR_censoring(penguins_complete, 0.3, "flipper_length_mm")
+miss_penguins_MNAR<-missMethods::delete_MNAR_censoring(penguins_complete, 
+                                                       0.3, "flipper_length_mm")
 
-all_data<-bind_rows("Full"=penguins_complete, "MCAR"= miss_penguins_MCAR, "MAR"= miss_penguins_MAR, "MNAR"=miss_penguins_MNAR, .id="Missingness")
+all_data<-bind_rows("Full"=penguins_complete, 
+                    "MCAR"= miss_penguins_MCAR,
+                    "MAR"= miss_penguins_MAR,
+                    "MNAR"=miss_penguins_MNAR, 
+                    .id="Missingness")
 ```
 
 ## 
@@ -347,13 +356,13 @@ library(lavaan)
 # we will use the Iris dataset for this example
 complete_model<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris)
 
-iris_MCAR<-missMethods::delete_MCAR(iris, 0.3, "Petal.Width")
+iris_MCAR<-missMethods::delete_MCAR(iris, 0.3, "Sepal.Width")
 
 miss_model1<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris_MCAR)
 
 ```
 
-```{r, echo=FALSE,message=FALSE}
+```{r, echo=FALSE,message=FALSE, warning=FALSE}
 library(stargazer, quietly = TRUE)
 stargazer(complete_model, miss_model1, 
           star.cutoffs = c(.05, .01, .001), 
@@ -362,7 +371,7 @@ stargazer(complete_model, miss_model1,
 
 ## 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 miss_model2 <- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris_MCAR, missing="ML")
 summary(miss_model2)
 
@@ -391,6 +400,16 @@ validate(iris, name = "Verifying flower dataset") |>
 
 ```{r}
 print(report)
+```
+
+## Messy data
+
+Look at the messy data dataset. How would you go about cleaning this dataset?
+
+```{r}
+messy_data <- readRDS(paste0(here::here(),"/OS_2023/dataHandling/data/messy_data.RDS")) 
+
+messy_data |> data.table::data.table() 
 ```
 
 ## Data wrangling
@@ -436,15 +455,15 @@ penguins_long |>
 
 ![](images/tidy-1.png)
 
-## Messy data
+## Untidy data
 
-Look at the messy data dataset. How would you go about cleaning this dataset?
+Have a look at the smallGame dataset.
 
-```{r}
-messy_data <- readRDS(paste0(here::here(),"/OS_2023/dataHandling/data/messy_data.RDS")) 
+-   What format is it in (long or wide)?
 
-messy_data |> data.table::data.table() 
-```
+-   How would you convert it to the other format?
+
+-   Which format do you find easier to use? (there is no "correct" answer to this one!)
 
 ## Code style
 
@@ -536,7 +555,7 @@ dogyrs(dogsAge = 2)
 ## 
 
 ```{r, error=TRUE}
-dogyrs(dogsAge = "FLikk")
+dogyrs(dogsAge = "Flikk")
 
 ```
 
@@ -551,7 +570,7 @@ dogyrs<-function(dogsAge=0){
   
 }
 
-dogyrs(dogsAge = "FLikk")
+dogyrs(dogsAge = "Flikk")
 ```
 
 ## 
@@ -637,7 +656,7 @@ filter_var(data=palmerpenguins::penguins, var="species", val="Adelie")
 
 scatter_plot <- function(data, x, y) {
   ggplot(data, aes(x, y)) +
-    geom_point(color = "yellow")
+    geom_point(colour = "yellow")
 }
 
 scatter_plot(palmerpenguins::penguins,"bill_length_mm", "bill_depth_mm" )
@@ -651,7 +670,7 @@ We need to tell R where look for the columns in the data
 
 scatter_plot <- function(data, x, y) {
   ggplot(data, aes({{x}}, {{y}})) +
-    geom_point(color = "yellow")
+    geom_point(colour = "yellow")
 }
 
 scatter_plot(palmerpenguins::penguins,bill_length_mm, bill_depth_mm)
