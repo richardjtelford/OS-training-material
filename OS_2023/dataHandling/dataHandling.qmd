@@ -1,0 +1,674 @@
+---
+title: "Data handling and curation - from raw to clean data"
+format: 
+  revealjs:
+    embed-resources: true
+    theme: moon
+    logo: "images/Leaf_LN.png"
+    slide-number: true
+    show-slide-number: all
+execute:
+  echo: true
+editor: visual
+---
+
+![](images/Ecology_data.jfif)
+
+## ![](images/data%20lifecycle.png)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+theme_set(ggcharts::theme_hermit(grid = "XY"))
+
+```
+
+## Data handling & curation
+
+Managing the "data life-cycle" within and beyond a project.
+
+-   creating data
+-   organising data
+-   maintaining data
+
+## Data cleaning vs Data wrangling
+
+***Data cleaning*** is the process of removing incorrect, duplicate, or otherwise erroneous data from a dataset
+
+***Data wrangling*** changing the format to make it more useful for your analysis
+
+## Some R Functions that help data cleaning
+
+### {janitor}
+
+```{r echo=TRUE}
+library(tidyverse) 
+library(palmerpenguins) 
+library(janitor)  
+palmerpenguins::penguins_raw |>  names() 
+```
+
+```{r}
+
+janitor::clean_names(palmerpenguins::penguins_raw) |>  names()
+```
+
+## 
+
+### {dplyr}
+
+```{r}
+clean_penguins<-janitor::clean_names(palmerpenguins::penguins_raw)  
+
+dplyr::glimpse(clean_penguins)
+```
+
+## 
+
+### {skimr}
+
+```{r}
+out<-skimr::skim(palmerpenguins::penguins_raw) 
+
+out
+```
+
+## 
+
+### {dplyr}
+
+```{r}
+#Deduplication  
+data<-tibble(Day=c("Monday", "Tuesday","Wednesday", "Wednesday"), Person=c("Becks", "Amy", "Matt", "Matt"))
+data
+data |> dplyr::distinct()
+```
+
+## 
+
+### {naniar}
+
+```{r}
+missing_penguins<-missMethods::delete_MCAR(clean_penguins, 0.3)
+
+missing_penguins |> 
+naniar::vis_miss()
+```
+
+## Missing data
+
+Missing data is normally a problem. Typically as ecologists we sweep missing data under the carpet by using a "complete case" approach to data analysis.
+
+![](images/SWEEP-IT-UNDER-THE-CARPET-BANKSY-2.jpg)
+
+## 
+
+If you have ever written some code like this:
+
+```{r, eval=FALSE}
+# na.omit() 
+df <- na.omit(df)  
+# complete.cases() 
+df <- df[complete.cases(df), ]   
+# rowSums() 
+df <- df[rowSums(is.na(df)) == 0, ]   
+# drop_na() 
+df <- df %>% tidyr::drop_na()
+```
+
+you are removing missing data (NAs) from your dataset.
+
+## Why is this a problem?
+
+By throwing away potentially useful data (only including those rows without a NA in them) you reduce the information you are working with, reduce statistical power and introduce selection bias (invalidating any assumption of randomisation).
+
+## Different types of missingness
+
+There are three broad categories of missing data:
+
+-   MCAR - missingness is not related to any measured or unmeasured variables
+
+-   MAR - missingness is not random but related to other variables and can be accounted for by another complete variable
+
+-   MNAR - missingness is related to the missing data itself (there is a systematic reason why the data are missing within a particular variable)
+
+## 
+
+Imagine that we are measuring rainfall at weather stations across Norway every year.
+
+::: {#tbl-panel layout-ncol="2"}
+| station number | rainfall |
+|----------------|----------|
+| 1              | 30       |
+| 2              | 150      |
+| 3              | 75       |
+| 4              | 250      |
+| 5              | 55       |
+
+: Complete data {#tbl-complete}
+
+| station number | rainfall |
+|----------------|----------|
+| 1              | 30       |
+| 2              |          |
+| 3              |          |
+| 4              | 250      |
+| 5              | 55       |
+
+: MCAR {#tbl-MCAR}
+
+Missing data patterns - MCAR
+:::
+
+## 
+
+::: {layout-ncol="2"}
+| station number | rainfall |
+|----------------|----------|
+| 1              | 30       |
+| 2              | 150      |
+| 3              | 75       |
+| 4              | 250      |
+| 5              | 55       |
+
+: Complete data {#tbl-complete2}
+
+| station number | rainfall |
+|----------------|----------|
+| 1              |          |
+| 2              |          |
+| 3              |          |
+| 4              | 250      |
+| 5              | 55       |
+
+: MCAR {#tbl-MAR}
+
+Missing data patterns - MAR
+:::
+
+## 
+
+::: {layout-ncol="2"}
+| station number | rainfall |
+|----------------|----------|
+| 1              | 30       |
+| 2              | 150      |
+| 3              | 75       |
+| 4              | 250      |
+| 5              | 55       |
+
+: Complete data {#tbl-complete3}
+
+| station number | rainfall |
+|----------------|----------|
+| 1              | 30       |
+| 2              |          |
+| 3              | 75       |
+| 4              |          |
+| 5              | 55       |
+
+: MCAR {#tbl-MNAR}
+
+Missing data patterns - MNAR
+:::
+
+## What effect does missingness have?
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse, quietly = TRUE) 
+library(missMethods, quietly = TRUE) 
+library(palmerpenguins)
+
+#create datasets with levels missingness
+
+penguins_complete<-penguins |> 
+  drop_na()
+
+miss_penguins_MCAR<-missMethods::delete_MCAR(penguins_complete, 0.3, "flipper_length_mm") 
+# create a pattern of missingness with censoring 
+#(missing value in flipper_length if body_mass is below 30% quantile of body_mass)
+
+miss_penguins_MAR<-missMethods::delete_MAR_censoring(penguins_complete, 0.3, "flipper_length_mm", "body_mass_g") 
+# create a pattern of missingness with censoring 
+#(missing value in flipper_length if flipper_length is below 30% quantile) 
+
+miss_penguins_MNAR<-missMethods::delete_MNAR_censoring(penguins_complete, 0.3, "flipper_length_mm")
+
+all_data<-bind_rows("Full"=penguins_complete, "MCAR"= miss_penguins_MCAR, "MAR"= miss_penguins_MAR, "MNAR"=miss_penguins_MNAR, .id="Missingness")
+```
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#plot the missing data function
+
+MDplot<-function(df_comp, df_mis, title){ df_comp$missX<-is.na(df_mis$flipper_length_mm) 
+ggplot(data=df_comp,aes(x=flipper_length_mm,y=body_mass_g, colour=missX))+ 
+  geom_point(alpha=0.2)+ geom_smooth(method = "lm")+
+  labs(x="Flipper length (mm)", y="Body mass (g)")+
+  scale_color_discrete(name="Missing data?")+ 
+  ggtitle(title)
+#+ theme_bw() 
+}
+
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+MDplot(penguins_complete, miss_penguins_MCAR, title="MCAR")
+
+```
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+MDplot(penguins_complete, miss_penguins_MAR, title="MAR")
+
+```
+
+## 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+MDplot(penguins_complete, miss_penguins_MNAR, title="MNAR")
+```
+
+## What can we do about missing data?
+
+With MCAR and MAR we can use multiple imputation techniques
+
+![](images/MICE.png)
+
+## 
+
+```{r, message=FALSE, warning=FALSE}
+# Load mice
+library(mice, quietly = TRUE)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Simulate data: location, year, count
+locations <- rep(1:5, each = 5)  # Assuming 5 locations
+years <- rep(2009:2023, 5)  # Assuming data for 5 years
+count <- round(rpois(25, lambda = 20))  # Simulated count data
+
+# Create a dataframe
+data <- data.frame(Location = locations, Year = years, Count = count)
+
+# Introduce missingness - Missing completely at random (MCAR)
+prop_missing <- 0.2  # Example: 20% missingness
+missing_indices <- sample(1:nrow(data), prop_missing * nrow(data))
+data$Count[missing_indices] <- NA
+
+# Check the structure of the data
+str(data)
+
+```
+
+## 
+
+When we impute the missing data we use 5 replicates and then take the mean of all 5 datasets.
+
+```{r}
+# Impute missing data using MICE
+imp <- mice(data, m = 5, method = 'pmm', seed = 500)
+
+
+```
+
+## 
+
+```{r, echo=FALSE}
+# Analyse trends and variation in the original and imputed data
+# For illustration purposes, assuming a simple trend analysis
+original_trend <- aggregate(data$Count, by = list(data$Year), FUN = mean, na.rm = TRUE)
+names(original_trend)<-c("Year","Count")
+imputed_trend <- complete(imp, 'long')
+imputed_trend <- aggregate(Count ~ Year, data = imputed_trend, FUN = mean)
+
+# Visualization of trends in original and imputed data
+plot_data<-bind_rows("original"=original_trend, "imputed"=imputed_trend, .id="Trend")
+
+```
+
+```{r, echo=FALSE}
+plot_data |> 
+  ggplot(aes(Year, Count, colour=Trend))+
+  geom_point()+
+  geom_line()
+
+```
+
+## sem() instead of lm()
+
+Using a Structured Equation Model (SEM) we can run a simple linear regression.
+
+```{r, echo=FALSE,message=FALSE}
+library(lavaan)
+# we will use the Iris dataset for this example
+complete_model<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris)
+
+iris_MCAR<-missMethods::delete_MCAR(iris, 0.3, "Petal.Width")
+
+miss_model1<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris_MCAR)
+
+```
+
+```{r, echo=FALSE,message=FALSE}
+library(stargazer, quietly = TRUE)
+stargazer(complete_model, miss_model1, 
+          star.cutoffs = c(.05, .01, .001), 
+  no.space = T, type = 'text')
+```
+
+## 
+
+```{r}
+miss_model2 <- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris_MCAR, missing="ML")
+summary(miss_model2)
+
+```
+
+Adding the argument 'missing = "ML"' to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used.
+
+## Data validation
+
+```{r}
+library(data.validator)  
+report <- data_validation_report()  
+
+between <- function(a, b) {   function(x) { a <= x && x <= b } }  
+
+validate(iris, name = "Verifying flower dataset") |>
+  validate_if(Sepal.Length > 0,description = "Sepal length is greater than 0") |>
+  validate_cols(between(0, 4),Sepal.Width,description = "Sepal width is between 0 and 4") |>
+  add_results(report)  
+#save_report(report) 
+#browseURL("validation_report.html")
+
+```
+
+## 
+
+```{r}
+print(report)
+```
+
+## Data wrangling
+
+![](images/Longwide.png)
+
+## Transform to long format
+
+```{r}
+library(tidyverse) 
+# this avoids tidyverse conflicts with the base function filter 
+conflicted::conflict_prefer("filter", "dplyr") 
+# Pivot longer  
+penguins_long<-penguins |>
+  pivot_longer(contains("_"),names_to = c("part", "measure" , "unit"),names_sep = "_")  
+
+penguins_long 
+
+```
+
+## Transform to wide format
+
+```{r}
+penguins_long |>
+  pivot_wider(names_from = species, values_from = value) 
+```
+
+## What's going on?
+
+No identifier for each observation so R puts all the values in a list. To solve this we need a unique row id.
+
+```{r}
+penguins_long |>
+  mutate(sample=row_number()) |>
+  pivot_wider(names_from = species,values_from = value) 
+```
+
+## Tidy data
+
+![](images/data-science.png)
+
+## Tidy data principles
+
+![](images/tidy-1.png)
+
+## Messy data
+
+Look at the messy data dataset. How would you go about cleaning this dataset?
+
+```{r}
+messy_data <- readRDS(paste0(here::here(),"/OS_2023/dataHandling/data/messy_data.RDS")) 
+
+messy_data |> data.table::data.table() 
+```
+
+## Code style
+
+What are attributes of good code?
+
+Have a look at the "notReproducible.qmd" file
+
+## Tidyverse style guide
+
+["Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."](https://style.tidyverse.org/)
+
+```{r, eval=FALSE}
+# Examples 
+day_one # Good 
+DayOne # Bad 
+# Avoid names of common functions
+T <- FALSE # Bad 
+c <- 10 # Bad 
+mean <- function(x) sum(x) # Bad 
+# Space after a comma 
+x[, 1] # Good 
+x[,1] # Bad 
+# space after () in functions 
+function(x) {}# Good 
+function (x) {} # Bad 
+function(x){} # Bad 
+```
+
+## Useful package for style
+
+```{r}
+library("styler") 
+style_text("a=3; 2", scope = "tokens")  
+```
+
+## What I think...
+
+1.  It runs (on your computer)
+
+2.  It runs (on my computer - without me having to do anything/much)
+
+3.  It does what you expect it to do (even after 5 years)
+
+4.  It is documented in some way
+
+## What Jenny Bryan thinks
+
+If the first line of your R script is
+
+setwd("C:\Users\jenny\path\that\only\I\have")
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+
+If the first line of your R script is
+
+rm(list = ls())
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+
+## Writing Functions {.center}
+
+## Functions
+
+```{r, eval=FALSE}
+x<-function(FUNCTION PARAMETERS){
+  FUNCTION BODY
+  }
+
+```
+
+## 
+
+```{r}
+myfirstfun<-function(dogsAge=0){
+  dogsAge*7
+}
+myfirstfun(dogsAge = 2)
+```
+
+## 
+
+```{r}
+dogyrs<-function(dogsAge=0){
+  dogsAge*7
+}
+dogyrs(dogsAge = 2)
+```
+
+## 
+
+```{r, error=TRUE}
+dogyrs(dogsAge = "FLikk")
+
+```
+
+```{r}
+
+dogyrs<-function(dogsAge=0){
+  if (is.numeric(dogsAge)){
+  dogsAge*7  
+  }else{
+    print("Error: dogsAge needs to be numeric")
+  }
+  
+}
+
+dogyrs(dogsAge = "FLikk")
+```
+
+## 
+
+switch()
+
+```{r}
+switch_ex<-function(x, y, op) {
+  switch(op,
+         plus = x + y,
+         minus = x - y,
+         times = x * y,
+         divide = x / y,
+         stop("Unknown op!")
+         )
+}
+
+switch_ex(1,4,"plus")
+switch_ex(1,4,"minus")
+switch_ex(1,4,"times")
+```
+
+## Write some functions!
+
+Convert UK miles to km - 1 mile = 1.609344 km; 1 km = 0.6213712 miles
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+miles2km<-function(miles){
+  if (is.numeric(miles)){
+  miles*1.609344
+  }else{
+    print("Miles needs to be numeric")
+  }}
+
+convertdist<-function(dist, value){
+  switch(dist,
+         miles = value*1.609344,
+         km = value*0.6213712,
+         stop("Unknown distance! Please use 'miles' or 'km' only."))}
+
+```
+
+## Functions with {tidyverse}
+
+```{r}
+# Filter a variable
+palmerpenguins::penguins |> 
+dplyr::filter(species=="Adelie")
+
+
+```
+
+## 
+
+```{r}
+filter_var<-function(data,var, val){
+  data |> 
+    dplyr::filter(var==val)
+  
+}
+
+filter_var(data=palmerpenguins::penguins, var="species", val="Adelie")
+```
+
+## 
+
+```{r}
+filter_var<-function(data,var, val){
+  data |> 
+    dplyr::filter(data[!!var]==!!val)
+  
+}
+
+filter_var(data=palmerpenguins::penguins, var="species", val="Adelie")
+
+```
+
+## Functions with {ggplot2}
+
+```{r}
+
+scatter_plot <- function(data, x, y) {
+  ggplot(data, aes(x, y)) +
+    geom_point(color = "yellow")
+}
+
+scatter_plot(palmerpenguins::penguins,"bill_length_mm", "bill_depth_mm" )
+```
+
+## 
+
+We need to tell R where look for the columns in the data
+
+```{r, warning=FALSE, message=FALSE}
+
+scatter_plot <- function(data, x, y) {
+  ggplot(data, aes({{x}}, {{y}})) +
+    geom_point(color = "yellow")
+}
+
+scatter_plot(palmerpenguins::penguins,bill_length_mm, bill_depth_mm)
+```
+
+## From functions to packages
+
+::: callout-tip
+## Packages
+
+"'I really should just make an R package with these functions so I don't have to keep copy/pasting them like a goddamn luddite.' Seriously, it doesn't have to be about sharing your code (although that is an added benefit!). It is about saving yourself time. (n.b. this is my attitude about all reproducibility.)" Hillary Parker
+:::
+
+## Packages
+
+Packages are "just" collections of functions (and sometimes data).
+
+Building a package is quite straight forward in RStudio
+
+File \> New Project \> New Directory \>R Package
