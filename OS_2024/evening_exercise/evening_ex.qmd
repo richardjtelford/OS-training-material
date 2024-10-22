@@ -1,0 +1,62 @@
+---
+title: "How reproducible is ecology?"
+author: "Aud H. Halbritter"
+format: 
+  revealjs:
+    embed-resources: true
+    theme: moon
+    slide-number: true
+    show-slide-number: all
+execute:
+  echo: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Reproducibilty
+
+![](reproducible-definition-grid.svg)
+
+::: {style="font-size: 40%;"}
+The Turing Way Community. This illustration is created by Scriberia with
+The Turing Way community, used under a CC-BY 4.0 licence. DOI:
+10.5281/zenodo.3332807
+:::
+
+## Data and code availability
+
+![](availability.png)
+
+::: {style="font-size: 40%;"}
+Culina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763
+:::
+
+## Exercise (1/2)
+
+Make groups of 3-4.
+
+Choose one of the following journals and select a random issue from 2024:
+
+-   Methods in Ecology and Evolution
+
+-   Journal of Ecology
+
+-   OIKOS
+
+-   American Naturalist
+
+-   Journal of Animal Ecology
+
+-   Ecological Monographs
+
+## Exercise (2/2)
+
+For each paper in this issue check:
+
+- Is the **data available** and can you download it? Repo or supplement
+file? In what format is the data available (xlsx, csv, txt, etc.)?
+
+- Is the **code available**? Choose one figure/analysis. Is the data and code for this figure/analysis available? Try to run the code, can you replicate the figure/analysis.
+
+- Add the data to this [google spreadsheet](https://docs.google.com/spreadsheets/d/1Rde3TsuFsExDmNNROZqslWVUOl_dXaLp4V-LnHq3Fyw/edit?gid=1921182395#gid=1921182395) and get a snack 🍪
