@@ -11,11 +11,11 @@ execute:
   echo: true
 ---
 
-## Non-reproducible workflow
+## {}
 
 ![](non-rep.png)
 
-## Reproducible workflow
+## {}
 
 ![](rep.png)
 
