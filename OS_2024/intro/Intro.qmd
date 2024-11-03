@@ -11,50 +11,52 @@ execute:
   echo: true
 ---
 
-## Introduction
+## Open Science courses
 
-![](intro/pics/best_practice_2.png)
+Increase the awareness of Open Science principles in our community and provide education and teaching material on open science, reproducibility and transparency in ecology. We
 
-## Aim of the course
+-   organize courses and workshops (hands-on)
 
-We are ecologists and statisticians in Norway that want to increase the awareness of Open Science principles in our community and provide education and teaching material on open science, reproducibility and transparency in ecology.
+-   provide the teaching material (openly available)
 
--   We organize courses and workshops on Open Science for ecologists.
+-   develop tools to facilitate Open Science practices
 
--   We provide the teaching material that we use in the Open Science course and other courses openly available.
-
--   We develop tools to facilitate Open Science practices in our community.
 
 ## Collaboration
 
-![](intro/pics/collab.png)
+![](pics/collab.png)
 
 ## Funding
 
-![](intro/pics/NSO.png)
+![](pics/NSO.png)
+
+## Aim of the OS course
+
+![](pics/Data_cycle.png)
 
 
 ## OS course 2022 in Finse
 
-![](intro/pics/course_2022.jpg)
+![](pics/course_2022.jpg)
 
 ## OS course 2023 in Hjerkinn
 
-![](intro/pics/course_2023.png)
+![](pics/course_2023.png)
 
 ## OS course 2024 in Hjerkinn
 
 To do: group photo
 
+
 ## Schedule
 
-::: {style="font-size: 50%;"}
+::: {style="font-size: 40%;"}
 +-----------+--------------------------------------+
 | Day       | Topic                                |
 +===========+======================================+
 | Monday    | Arriving                             |
 |           |                                      |
-|           | Introduction                         |
+|           | Introduction to OS                   |
 |           |                                      |
 |           | Present ourselves                    |
 +-----------+--------------------------------------+
@@ -64,7 +66,9 @@ To do: group photo
 |           |                                      |
 |           | Make an R package                    |
 +-----------+--------------------------------------+
-| Wednesday | Excursion                            |
+| Wednesday | Villrein and Excursion               |
+|           |                                      |
+|           | Group photo                          |
 |           |                                      |
 |           | Publish and discover data            |
 |           |                                      |
@@ -84,18 +88,32 @@ To do: group photo
 
 ## Daily schedule
 
-![](intro/pics/schedule.png)
+![](pics/schedule.png)
 
 
 ## Excursion
 
-![](intro/pics/excursion.png)
+![](pics/excursion.png)
 
 ## Villreinsenter
 
-![](intro/pics/rein.jpg)
+![](pics/rein.jpg)
 
-## House keeping
+## Housekeeping
 
 -   Meals including coffee break are in the dining room
 -   Lectures here (room will be locked at night)
+-   Evenings: room in the basement
+
+
+## Teching material
+
+All material from the course will be available after the course on [github](https://github.com/Open-Science-Course/OS-training-material) with an overview on the [webpage](https://open-science-course.github.io/course_website/course_content.html).
+
+
+## Living Norway community
+
+![](pics/livingnorway.png)
+
+## Questions?
+
