@@ -509,15 +509,42 @@ function(x){} # Bad
 ## Useful packages for style
 
 ```{r}
-library("styler") 
-style_text("a=3; 2", scope = "tokens")  
+#| echo: true
+#| message: false
+#| warning: false
+
+library(lintr)
+# Define the code as a character vector
+code <- c(
+  "# Spacing ",
+  "average<-mean(feet/12 + inches,na.rm=TRUE)",
+  "sqrt(x ^ 2 + y ^ 2)",
+  "x <- 1 : 10",
+  "base :: get",
+  "# Indenting",
+  "if (y < 0 && debug)",
+  "  message('Y is negative')",
+  "# Assignment",
+  "x = 5"
+)
+
+# Write the code to 'bad_style.R'
+writeLines(code, "bad_style.R")
+
+# Run lintr on the newly created file
+lint("bad_style.R")
+
 ```
 
 ## 
 
-Lintr
+```{r}
+library("styler") 
+style_file("bad_style.R")
+readLines("bad_style.R")
 
-[lintr](https://github.com/r-lib/lintr) is complementary to [the `{styler}` package](https://github.com/r-lib/styler) which automatically restyles code, eliminating some of the problems that [lintr](https://github.com/r-lib/lintr) can detect.
+
+```
 
 ## What I think...
 
