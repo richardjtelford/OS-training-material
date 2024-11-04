@@ -1,6 +1,6 @@
 ---
 title: "How reproducible is ecology?"
-author: "Aud H. Halbritter"
+author: "Aud and Matt"
 format: 
   revealjs:
     embed-resources: true
@@ -31,6 +31,91 @@ The Turing Way community, used under a CC-BY 4.0 licence. DOI:
 ::: {style="font-size: 40%;"}
 Culina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763
 :::
+
+
+## 
+
+### 2023: Review 87 papers from 6 journals
+
+```{r}
+#| label: setup
+#| echo: false
+#| eval: true
+#| fig-cap: Number of studies with available data and/or code.
+
+
+library(tidyverse)
+library(readxl)
+dat <- read_excel("Reproducibility.xlsx", sheet = "Hjerkinn_2023") |>
+  select(Group:Issue, `Is the data available?`, "Is the code to run the analysis for Fig/Tab x available?") |> 
+  rename("data" = `Is the data available?`,
+         "code" = "Is the code to run the analysis for Fig/Tab x available?") %>%
+  mutate(Journal = tolower(Journal),
+         Journal = if_else(Journal == "amrican naturalist", "american naturalist", Journal),
+         data = tolower(data),
+         data = case_when(data == "na" ~ NA_character_,
+                          data == "yes, but" ~ "yes",
+                          TRUE ~ data),
+         code = tolower(code)) |> 
+  pivot_longer(cols = c(data, code), names_to = "variable", values_to = "availability") |> 
+  mutate(variable = factor(variable, levels = c("data", "code"))) |> 
+  filter(!availability %in% c("yes, but"))
+
+dat |> 
+  group_by(Journal) |> 
+  summarise(n = n()) |> 
+  ggplot(aes(x = Journal, y = n, fill = Journal)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "", y = "") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+```
+
+
+## 
+
+### 2023: data and code availability
+
+```{r}
+#| label: fig-two
+#| echo: false
+#| eval: true
+#| fig-cap: Data and code availability.
+
+dat |> 
+  group_by(variable, availability) |> 
+  summarise(n = n()) |> 
+  ggplot(aes(x = variable, y = n, fill = availability)) +
+  geom_col() +
+  labs(x = "", y = "") +
+  theme_bw()
+
+```
+
+
+## 
+
+### 2023: data and code availability
+
+```{r}
+#| label: fig-three
+#| echo: false
+#| eval: true
+
+dat |> 
+  group_by(Journal, variable, availability) |> 
+  summarise(n = n()) |> 
+  ggplot(aes(x = Journal, y = n, fill = availability)) +
+  geom_col(position = "fill") +
+  coord_flip() +
+  labs(x = "", y = "") +
+  facet_wrap(~ variable) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+```
 
 ## Exercise (1/2)
 
