@@ -1,0 +1,12 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - course_intro.qmd
+
+format:
+  html:
+    code-link: true
+
+execute:
+  freeze: auto

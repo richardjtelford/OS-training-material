@@ -1,6 +1,6 @@
 ---
 title: "Introduction to reproducible documents"
-author: "Aud H. Halbritter"
+author: "Aud H. Halbritter (Richard Telford)"
 format: 
   revealjs:
     embed-resources: true
@@ -10,6 +10,9 @@ format:
 execute:
   echo: true
 ---
+
+## How do you write reports, manuscripts, presentations?
+
 
 ## {}
 
