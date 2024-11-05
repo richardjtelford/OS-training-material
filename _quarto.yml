@@ -7,10 +7,18 @@ project:
     - OS_2024/dataHandling/dataHandling.qmd
     - OS_2024/Systematic_Reviews/Systematic_Reviews.qmd
     - OS_2024/Systematic_Reviews/meta_analysis.qmd
+    - functions.qmd
 
 format:
   html:
-    code-link: true
+      highlight-style: a11y
+      theme:
+        light: [zephyr, css/light.scss]
+        dark: [zephyr, css/dark.scss, css/light.scss]
+      code-link: true
 
 execute:
   freeze: auto
+
+website:
+    favicon: figures/favicon.ico
