@@ -712,5 +712,54 @@
     "title": "Introduction to reproducible workflows",
     "section": "Biostats tutorial",
     "text": "Biostats tutorial\nGo to this webpage: https://biostats-r.github.io/"
+  },
+  {
+    "objectID": "exercise_reproducibility.html#reproducibilty",
+    "href": "exercise_reproducibility.html#reproducibilty",
+    "title": "How reproducible is ecology?",
+    "section": "Reproducibilty",
+    "text": "Reproducibilty\n\n\nThe Turing Way Community. This illustration is created by Scriberia with The Turing Way community, used under a CC-BY 4.0 licence. DOI: 10.5281/zenodo.3332807"
+  },
+  {
+    "objectID": "exercise_reproducibility.html#data-and-code-availability",
+    "href": "exercise_reproducibility.html#data-and-code-availability",
+    "title": "How reproducible is ecology?",
+    "section": "Data and code availability",
+    "text": "Data and code availability\n\n\nCulina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763"
+  },
+  {
+    "objectID": "exercise_reproducibility.html#section",
+    "href": "exercise_reproducibility.html#section",
+    "title": "How reproducible is ecology?",
+    "section": "",
+    "text": "2023: Review 87 papers from 6 journals\n\nNumber of studies with available data and/or code."
+  },
+  {
+    "objectID": "exercise_reproducibility.html#section-1",
+    "href": "exercise_reproducibility.html#section-1",
+    "title": "How reproducible is ecology?",
+    "section": "",
+    "text": "2023: data and code availability\n\nFigure 1: Data and code availability."
+  },
+  {
+    "objectID": "exercise_reproducibility.html#section-2",
+    "href": "exercise_reproducibility.html#section-2",
+    "title": "How reproducible is ecology?",
+    "section": "",
+    "text": "2023: data and code availability\n\nFigure 2: ?(caption)"
+  },
+  {
+    "objectID": "exercise_reproducibility.html#exercise-12",
+    "href": "exercise_reproducibility.html#exercise-12",
+    "title": "How reproducible is ecology?",
+    "section": "Exercise (1/2)",
+    "text": "Exercise (1/2)\nMake groups of 3-4.\nChoose one of the following journals and select a random issue from 2024:\n\nMethods in Ecology and Evolution\nJournal of Ecology\nOIKOS\nAmerican Naturalist\nJournal of Animal Ecology\nEcological Monographs"
+  },
+  {
+    "objectID": "exercise_reproducibility.html#exercise-22",
+    "href": "exercise_reproducibility.html#exercise-22",
+    "title": "How reproducible is ecology?",
+    "section": "Exercise (2/2)",
+    "text": "Exercise (2/2)\nFor each paper in this issue check:\n\nIs the data available and can you download it? Repo or supplement file? In what format is the data available (xlsx, csv, txt, etc.)?\nIs the code available? Choose one figure/analysis. Is the data and code for this figure/analysis available? Try to run the code, can you replicate the figure/analysis.\nAdd the data to this google spreadsheet and get a snack 🍪"
   }
 ]

@@ -1,0 +1,20 @@
+{
+  "hash": "454046eabe1e399e86aeb26e6b9d8478",
+  "result": {
+    "markdown": "---\ntitle: \"How reproducible is ecology?\"\nauthor: \"Aud and Matt\"\nformat: \n  revealjs:\n    embed-resources: true\n    theme: moon\n    slide-number: true\n    show-slide-number: all\nexecute:\n  echo: true\neditor: \n  markdown: \n    wrap: 72\n---\n\n\n## Reproducibilty\n\n![](pics/reproducible-definition-grid.svg)\n\n::: {style=\"font-size: 40%;\"}\nThe Turing Way Community. This illustration is created by Scriberia with\nThe Turing Way community, used under a CC-BY 4.0 licence. DOI:\n10.5281/zenodo.3332807\n:::\n\n## Data and code availability\n\n![](pics/availability.png)\n\n::: {style=\"font-size: 40%;\"}\nCulina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763\n:::\n\n\n## \n\n### 2023: Review 87 papers from 6 journals\n\n\n::: {.cell}\n::: {.cell-output-display}\n![Number of studies with available data and/or code.](exercise_reproducibility_files/figure-revealjs/setup-1.png){width=960}\n:::\n:::\n\n\n\n## \n\n### 2023: data and code availability\n\n\n::: {.cell}\n::: {.cell-output-display}\n![Data and code availability.](exercise_reproducibility_files/figure-revealjs/fig-two-1.png){#fig-two width=960}\n:::\n:::\n\n\n\n## \n\n### 2023: data and code availability\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](exercise_reproducibility_files/figure-revealjs/fig-three-1.png){#fig-three width=960}\n:::\n:::\n\n\n## Exercise (1/2)\n\nMake groups of 3-4.\n\nChoose one of the following journals and select a random issue from 2024:\n\n-   Methods in Ecology and Evolution\n\n-   Journal of Ecology\n\n-   OIKOS\n\n-   American Naturalist\n\n-   Journal of Animal Ecology\n\n-   Ecological Monographs\n\n## Exercise (2/2)\n\nFor each paper in this issue check:\n\n- Is the **data available** and can you download it? Repo or supplement\nfile? In what format is the data available (xlsx, csv, txt, etc.)?\n\n- Is the **code available**? Choose one figure/analysis. Is the data and code for this figure/analysis available? Try to run the code, can you replicate the figure/analysis.\n\n- Add the data to this [google spreadsheet](https://docs.google.com/spreadsheets/d/1Rde3TsuFsExDmNNROZqslWVUOl_dXaLp4V-LnHq3Fyw/edit?gid=1921182395#gid=1921182395) and get a snack 🍪\n",
+    "supporting": [
+      "exercise_reproducibility_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
