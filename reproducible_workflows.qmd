@@ -13,19 +13,19 @@ execute:
 
 ## {}
 
-![](data_workflow.png)
+![](pics/data_workflow.png)
 
 ## {}
 
-![](targets_pipeline.png)
+![](pics/targets_pipeline.png)
 
 ## {}
 
-![](reproducible_pipeline.png)
+![](pics/reproducible_pipeline.png)
 
 
 ## Biostats tutorial
 
 Go to this webpage: https://biostats-r.github.io/
 
-![](Screenshot 2024-10-22 at 10.09.05.png)
+![](pics/target_exercise.png)
