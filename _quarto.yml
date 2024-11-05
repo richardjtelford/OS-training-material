@@ -7,6 +7,7 @@ project:
     - OS_2024/dataHandling/dataHandling.qmd
     - OS_2024/Systematic_Reviews/Systematic_Reviews.qmd
     - OS_2024/Systematic_Reviews/meta_analysis.qmd
+    - functions.qmd
 
 format:
   html:
