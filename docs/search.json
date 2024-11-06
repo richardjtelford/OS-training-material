@@ -761,5 +761,222 @@
     "title": "How reproducible is ecology?",
     "section": "Exercise (2/2)",
     "text": "Exercise (2/2)\nFor each paper in this issue check:\n\nIs the data available and can you download it? Repo or supplement file? In what format is the data available (xlsx, csv, txt, etc.)?\nIs the code available? Choose one figure/analysis. Is the data and code for this figure/analysis available? Try to run the code, can you replicate the figure/analysis.\nAdd the data to this google spreadsheet and get a snack 🍪"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#introduction",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#introduction",
+    "title": "A gentle introduction to Open Science",
+    "section": "Introduction",
+    "text": "Introduction\n\n\n\n\n\n\nOpen science is just science done the way science should be done….\n\n\n\nOR\n\n\n\n\n\n\nIn the future there will be science and closed science\n(i.e. -&gt; what we today call open science will in the future just be science….)\n\n\n\n\nPillars of Open Science, UNESCO (2021)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#living-norway-ecological-data-network",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#living-norway-ecological-data-network",
+    "title": "A gentle introduction to Open Science",
+    "section": "Living Norway Ecological Data Network",
+    "text": "Living Norway Ecological Data Network\n\nLiving Norway Ecological Data Network facilitates open, reproducible and transparent sharing, use and reuse of ecological data to the benefit of society and science"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#living-norway-ecological-data-network-1",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#living-norway-ecological-data-network-1",
+    "title": "A gentle introduction to Open Science",
+    "section": "Living Norway Ecological Data Network",
+    "text": "Living Norway Ecological Data Network"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#open-science-is-an-umbrella-term",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#open-science-is-an-umbrella-term",
+    "title": "A gentle introduction to Open Science",
+    "section": "Open Science is an umbrella term",
+    "text": "Open Science is an umbrella term"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#but-why-bother",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#but-why-bother",
+    "title": "A gentle introduction to Open Science",
+    "section": "But why bother?",
+    "text": "But why bother?"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#what-is-open-science",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#what-is-open-science",
+    "title": "A gentle introduction to Open Science",
+    "section": "What is Open Science",
+    "text": "What is Open Science\n\n\n\n\n\n\n\n\n\n\n\nWe arranged a two-day seminar about open science in research and teaching in 2020\nThe summary of the workshop can be found in the link below\n\n\n\n\n\nTransforming science education to meet the needs of today’s students and tomorrow’s science"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#is-it-all-good---or-are-there-remaining-challenges",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#is-it-all-good---or-are-there-remaining-challenges",
+    "title": "A gentle introduction to Open Science",
+    "section": "Is it all good - or are there remaining challenges?",
+    "text": "Is it all good - or are there remaining challenges?"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-six-principles-of-open-science",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-six-principles-of-open-science",
+    "title": "A gentle introduction to Open Science",
+    "section": "The six principles of open science",
+    "text": "The six principles of open science\n\n\n\nOpen methodology\nOpen source\nOpen data\nOpen access\nOpen peer review\nOpen educational resources"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#different-schools-of-open-science",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#different-schools-of-open-science",
+    "title": "A gentle introduction to Open Science",
+    "section": "Different schools of open science",
+    "text": "Different schools of open science\n\n\n\n\n\n\n\n\n\nThe infrastructure school\nThe measurement school\nThe public school\nThe democratic school\nThe pragmatic school\n\nSee Fecher and Friesike (2014)\n\n\n\n\n\n\n\nimage: Flaticon.com"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#topics-for-discussion",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#topics-for-discussion",
+    "title": "A gentle introduction to Open Science",
+    "section": "Topics for discussion",
+    "text": "Topics for discussion\n\n\n\n\n\n\n\nWhat do YOU associate with Open Science?\nHow do you think Open Science can improve your project?"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-reproduciblity-crisis",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-reproduciblity-crisis",
+    "title": "A gentle introduction to Open Science",
+    "section": "The reproduciblity crisis",
+    "text": "The reproduciblity crisis\n\n\n\n\n\n\n1,500 scientists lift the lid on reproducibility | Nature"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#access-to-data",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#access-to-data",
+    "title": "A gentle introduction to Open Science",
+    "section": "Access to data",
+    "text": "Access to data\n\n\n\n\n\n\n\n\n\nQuestion\n\n\nWhat do you think is the situation for student thesis?\nCould this be a concern?\n\n\n\n\n\n\n\n\n\n\n\nWhen we publish scientific papers it is expected that data is shared (archived) publicly (so that other researchers can reuse the data)\nHowever, currently we often find that this is not happening\n\nSee e.g. Archmiller et al. (2020)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#section",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#section",
+    "title": "A gentle introduction to Open Science",
+    "section": "…",
+    "text": "…\n\nSee Mandeville et al. (2021) for details"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#access-to-code",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#access-to-code",
+    "title": "A gentle introduction to Open Science",
+    "section": "Access to code",
+    "text": "Access to code\n\n\n\n\n\n\n\n\n\nQuestion\n\n\nWhat do you think is the situation for student thesis?\nCould this be a concern?\n\n\n\n\n\n\n\n\n\n\n\nWhen we publish scientific papers - we are expected to share (archive) R-code (or other code we are using to produce the reported results).\nAgain - there is room for improvement!\n\nSee e.g. Culina et al. (2020)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#fair",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#fair",
+    "title": "A gentle introduction to Open Science",
+    "section": "FAIR!",
+    "text": "FAIR!\n\nSee Wilkinson (2016)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#questionable-reserach-practices",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#questionable-reserach-practices",
+    "title": "A gentle introduction to Open Science",
+    "section": "Questionable Reserach Practices",
+    "text": "Questionable Reserach Practices\n\nSee Fraser (2018) for details and further discussion!"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-preregistration-revolution",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#the-preregistration-revolution",
+    "title": "A gentle introduction to Open Science",
+    "section": "The preregistration revolution!",
+    "text": "The preregistration revolution!\n\n\n\n\n\nSee Nosek et al. (2018)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#distinguish-between-exploratory-and-confirmatory-science",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#distinguish-between-exploratory-and-confirmatory-science",
+    "title": "A gentle introduction to Open Science",
+    "section": "Distinguish between exploratory and confirmatory science",
+    "text": "Distinguish between exploratory and confirmatory science\n\n\n\n\n\n\nSee Nilsen, Bowler, and Linnell (2020)"
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#open-science-is-just-as-much-about.",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#open-science-is-just-as-much-about.",
+    "title": "A gentle introduction to Open Science",
+    "section": "Open science is just as much about….",
+    "text": "Open science is just as much about…."
+  },
+  {
+    "objectID": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#references",
+    "href": "OS_2024/introduction_os/Gentle_introduction_OS_2024.html#references",
+    "title": "A gentle introduction to Open Science",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nArchmiller, Althea A., Andrew D. Johnson, Jane Nolan, Margaret Edwards, Lisa H. Elliott, Jake M. Ferguson, Fabiola Iannarilli, et al. 2020. “Computational Reproducibility in the Wildlife Society’s Flagship Journals.” The Journal of Wildlife Management 84 (5): 1012–17. https://doi.org/10.1002/jwmg.21855.\n\n\nCulina, Antica, Ilona van den Berg, Simon Evans, and Alfredo Sánchez-Tójar. 2020. “Low Availability of Code in Ecology: A Call for Urgent Action.” PLOS Biology 18 (7): 1–9. https://doi.org/10.1371/journal.pbio.3000763.\n\n\nFecher, Benedikt, and Sascha Friesike. 2014. “Open Science: One Term, Five Schools of Thought.” In Opening Science: The Evolving Guide on How the Internet Is Changing Research, Collaboration and Scholarly Publishing, edited by Sönke Bartling and Sascha Friesike, 17–47. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-00026-8_2.\n\n\nFraser, Tim AND Nakagawa, Hannah AND Parker. 2018. “Questionable Research Practices in Ecology and Evolution.” PLOS ONE 13 (7): 1–16. https://doi.org/10.1371/journal.pone.0200303.\n\n\nMandeville, Caitlin P, Wouter Koch, Erlend B Nilsen, and Anders G Finstad. 2021. “Open Data Practices among Users of Primary Biodiversity Data.” BioScience 71 (11): 1128–47. https://doi.org/10.1093/biosci/biab072.\n\n\nNilsen, Erlend B., Diana E. Bowler, and John D. C. Linnell. 2020. “Exploratory and Confirmatory Research in the Open Science Era.” Journal of Applied Ecology 57 (4): 842–47. https://doi.org/10.1111/1365-2664.13571.\n\n\nNosek, B. A., C. R. Ebersol, A. C. DeHaven, and D. T. Mello. 2018. “The Preregistration Revolution.” PNAS 115 (11): 2600–2606. https://doi.org/10.1073/pnas.1708274114.\n\n\nWilkinson, et al. 2016. “The FAIR Guiding Principles for Scientific Data Management and Stewardship.” Scientific Data 3. https://doi.org/10.1093/biosci/biab072."
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp",
+    "title": "Open Science: Tools and approaches",
+    "section": "The Data Management Plan (DMP)",
+    "text": "The Data Management Plan (DMP)"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp-1",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp-1",
+    "title": "Open Science: Tools and approaches",
+    "section": "The Data Management Plan (DMP)",
+    "text": "The Data Management Plan (DMP)\nA document that describe your research data and how you plan to handle them\n\nHow is your data collected\nHow is your data stored\nWho owns the data\nHow is the data going to be shared and archived\nAre there any legal or ethical (e.g. GDPR) issues?\nVolume of data\nCosts associated with storing /archiving – and who is paying"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp-2",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#the-data-management-plan-dmp-2",
+    "title": "Open Science: Tools and approaches",
+    "section": "The Data Management Plan (DMP)",
+    "text": "The Data Management Plan (DMP)\nA DMP usually start out with a template:\n\nEasyDMP: [here]\nSikt: [here]"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis",
+    "title": "Open Science: Tools and approaches",
+    "section": "Preregistration of your hypothesis",
+    "text": "Preregistration of your hypothesis"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#prergistration-of-your-hypothesis",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#prergistration-of-your-hypothesis",
+    "title": "Open Science: Tools and approaches",
+    "section": "Prergistration of your hypothesis",
+    "text": "Prergistration of your hypothesis\nUseful to distinguish between exploratory and confirmatory science\n\n\n\n\n\n\nSee Nilsen, Bowler, and Linnell (2020)"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis-1",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis-1",
+    "title": "Open Science: Tools and approaches",
+    "section": "Preregistration of your hypothesis",
+    "text": "Preregistration of your hypothesis\n\n\n\n\n\nSee Nosek et al. (2018)"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis-2",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#preregistration-of-your-hypothesis-2",
+    "title": "Open Science: Tools and approaches",
+    "section": "Preregistration of your hypothesis",
+    "text": "Preregistration of your hypothesis\nA document that describe your research hypotheses and how you plan to test them\n\nA clear description of your hypothesis / hypotheses\nA clear description of how you plan to collect data to test them\nA clear description of how you plan to test them statistically\nA clear description of how you plan to report the results"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#registered-reports-taking-it-one-step-further",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#registered-reports-taking-it-one-step-further",
+    "title": "Open Science: Tools and approaches",
+    "section": "Registered reports: taking it one step further",
+    "text": "Registered reports: taking it one step further"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#registered-reports-taking-it-one-step-further-1",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#registered-reports-taking-it-one-step-further-1",
+    "title": "Open Science: Tools and approaches",
+    "section": "Registered reports: taking it one step further",
+    "text": "Registered reports: taking it one step further\nA per-reviewed document (report) that clearly outline the hypotheses, data collection, data analyses and reporting prior to conducting the research\n\nExtends the pre-registration discussed so far because the report is also per-reviewed\nAfter revision (or repeated revisions) the report is de-facto accepted for publication by the journal\nOffered by several journals [e.g. Ecological Solutions and Evidence: Registered Reports Author Guidelines (wiley.com)"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#data-papers",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#data-papers",
+    "title": "Open Science: Tools and approaches",
+    "section": "Data papers",
+    "text": "Data papers\nA data paper is a textual (extended) description of your data\n\nIt is a per-reviewed publication describing a data set, published in a journal\nThe main purpose of the data paper is to document data, not to solve new research questions\nA data paper can increase visibility and ensure you get credit for the data you share\nThe paper link to the data, but you still need to find a suitable place to share (publish) your data\nExample: Data papers (gbif.org)"
+  },
+  {
+    "objectID": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#references",
+    "href": "OS_2024/Tools_approaches/Tools_Approaches_OS_2024.html#references",
+    "title": "Open Science: Tools and approaches",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nNilsen, Erlend B., Diana E. Bowler, and John D. C. Linnell. 2020. “Exploratory and Confirmatory Research in the Open Science Era.” Journal of Applied Ecology 57 (4): 842–47. https://doi.org/10.1111/1365-2664.13571.\n\n\nNosek, Brian A., Charles R. Ebersole, Alexander C. DeHaven, and David T. Mellor. 2018. “The Preregistration Revolution.” Proceedings of the National Academy of Sciences 115 (11): 2600–2606. https://doi.org/10.1073/pnas.1708274114."
   }
 ]
