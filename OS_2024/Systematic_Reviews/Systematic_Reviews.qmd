@@ -4,7 +4,6 @@ author: "Matt"
 format: 
   revealjs:
     embed-resources: true
-    theme: sky
     logo: "images/Leaf_LN.png"
     slide-number: true
     show-slide-number: all

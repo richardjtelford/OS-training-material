@@ -14,11 +14,9 @@ project:
     - OS_2024/Tools_approaches/Tools_Approaches_OS_2024.qmd
 
 format:
-  html:
+  revealjs:
       highlight-style: a11y
-      theme:
-        light: [zephyr, css/light.scss]
-        dark: [zephyr, css/dark.scss, css/light.scss]
+      theme: simple
       code-link: true
 
 execute:

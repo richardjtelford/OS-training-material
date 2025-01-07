@@ -3,7 +3,6 @@ title: "Data handling and curation - from raw to clean data"
 format: 
   revealjs:
     embed-resources: true
-    theme: moon
     logo: "images/Leaf_LN.png"
     slide-number: true
     show-slide-number: all
