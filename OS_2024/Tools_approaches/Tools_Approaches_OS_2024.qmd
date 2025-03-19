@@ -4,7 +4,6 @@ subtitle: "Presentation at the Open Science course at Hjerkinn 2024"
 author: "Erlend B. Nilsen"
 format: 
   revealjs:
-    theme: dark
     slide-number: true
 editor: visual
 bibliography: bib_example.bib

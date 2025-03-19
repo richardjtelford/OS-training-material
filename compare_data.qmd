@@ -4,7 +4,6 @@ author: "Aud and Matt"
 format: 
   revealjs:
     embed-resources: true
-    theme: moon
     slide-number: true
     show-slide-number: all
 execute:
