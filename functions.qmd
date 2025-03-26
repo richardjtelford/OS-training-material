@@ -20,10 +20,10 @@ theme_set(theme_bw())
 
 ```
 
+# Are your R skills sufficient?
 
-# Are your R skills sufficient? 
+------------------------------------------------------------------------
 
----
 ::: r-fit-text
 Can you spell\
 ~~funktion~~ ~~FUNkshun~~\
@@ -46,34 +46,29 @@ f <- function(){}
 f()
 ```
 
-Takes no arguments. Does not work. Returns nothing.
+Takes no arguments.
+Does not work.
+Returns nothing.
 
 Guaranteed never to fail.
 
-::: {.incremental}
-
-- `f` is a terrible name for a function - use a descriptive name
-- keyword `function` used to define functions
-- `()` contain all the arguments separated by commas
-- `{}` contain the body of the function
+::: incremental
+-   `f` is a terrible name for a function - use a descriptive name
+-   keyword `function` used to define functions
+-   `()` contain all the arguments separated by commas
+-   `{}` contain the body of the function
 :::
-
-
-
 
 ## Why write functions?
 
-::: {.incremental}
-
-- Reduce code duplication: Don't repeat yourself
-- Share between projects
-- Share with others
-- Promote better documentation
-- Easier to test
-- Easier to debug
+::: incremental
+-   Reduce code duplication: Don't repeat yourself
+-   Share between projects
+-   Share with others
+-   Promote better documentation
+-   Easier to test
+-   Easier to debug
 :::
-
-
 
 ## Don't repeat yourself DRY
 
@@ -102,8 +97,8 @@ penguins |>
 
 General -- Specific functions
 
-- General - more arguments, more flexible, more complex
-- Specific - fewer arguments, less flexible, simpler
+-   General - more arguments, more flexible, more complex
+-   Specific - fewer arguments, less flexible, simpler
 
 ```{r}
 #| eval: false
@@ -150,12 +145,11 @@ complex <- function(arg1, arg2, ...) { # bad
 
 Large complex function
 
-- difficult to understand
-- many arguments
-- difficult to test
+-   difficult to understand
+-   many arguments
+-   difficult to test
 
 ## Break into smaller functions
-
 
 ```{r}
 # Better
@@ -184,8 +178,6 @@ complex <- function(arg1, arg2, ...) {
 }  
 ```
 
-
-
 ## Functions using tidyverse
 
 Tidyverse is fantastic for interactive analyses.
@@ -201,10 +193,9 @@ filter_penguins <- function(.data, species) {
 filter_penguins(penguins, "Gentoo")  
 ```
 
-
 Do you need to use tidyverse?
 
- - reducing the number of dependencies is good
+-   reducing the number of dependencies is good
 
 ## brace brace
 
@@ -242,18 +233,15 @@ penguins |>
   labs(x = "Body mass g", y = "Bill length mm", title = "Gentoo")
 ```
 
-
 # You cannot write functions without writing bugs.<br><br> That is the law
 
 ## Bugs
 
-- Syntax error
-- Incorrect results
-- function throws unexpected error
-
+-   Syntax error
+-   Incorrect results
+-   function throws unexpected error
 
 ## Buggy code
-
 
 ```{r}
 #| error: true
@@ -266,14 +254,13 @@ buggy(1)
 
 ## Strategies for debugging 0
 
-- Read the error messages
-- Use `traceback()` to see where the error occurred
-- Use `options(error = recover)` to enter the debugger when an error occurs
-
+-   Read the error messages
+-   Use `traceback()` to see where the error occurred
+-   Use `options(error = recover)` to enter the debugger when an error occurs
 
 ## Strategies for debugging 1
 
-- Add `print()` statements to see state of variables
+-   Add `print()` statements to see state of variables
 
 ```{r}
 #| error: true  
@@ -288,7 +275,7 @@ buggy(1)
 
 ## Strategies for debugging 2
 
-- Add `browser()` somewhere strategic
+-   Add `browser()` somewhere strategic
 
 ```{r}
 #| error: true  
@@ -303,11 +290,10 @@ buggy(1)
 
 In the debugger, use
 
-- `n` to step through the code
-- `c` to continue
-- `s` to step into a function
-- `Q` to quit
-
+-   `n` to step through the code
+-   `c` to continue
+-   `s` to step into a function
+-   `Q` to quit
 
 ## Strategies for debugging 3
 
@@ -322,7 +308,6 @@ undebug(buggy)
 # or
 debugonce(buggy)
 ```
-
 
 ## Slow code
 
@@ -342,6 +327,7 @@ toc()
 Use `bench::mark()` to compare different implementations
 
 ```{r}
+#| label: bench-mark
 bm <- bench::mark(
   badloop = {x <- c(); for(i in 1:1000){x <- c(x, i^2)}; x},
   goodloop = {x <- numeric(1000); for(i in 1:1000){x[i] <- i^2}; x},
@@ -374,13 +360,12 @@ h <- function() {
 profvis(f())
 ```
 
-
 ## Cures for slow code
 
 Readability is more important than speed
 
-- Use vectorised code
-- parallelize code with `furrr` or `future` packages
+-   Use vectorised code
+-   parallelize code with `furrr` or `future` packages
 
 ## More resources
 
