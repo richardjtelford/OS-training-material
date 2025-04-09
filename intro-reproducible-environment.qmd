@@ -221,6 +221,44 @@ R interface with `rix` package
 -   lets you work interactively in RStudio
 -   provides helpers that make it easy to build those environments.
 
+```{r}
+#| label: rix
+#| eval: false
+#| echo: true
+
+rix::rix(
+  date = "2025-04-07", # use rix::available_dates() for options
+  r_pkgs = c("tidyverse", "quarto"), # CRAN packages
+  system_pkgs = "quarto", # system packages
+  ide = "rstudio",
+  project_path = "./nix"
+  )
+
+```
+
+## Using nix
+
+In a terminal window run
+
+```{bash}
+#| eval: false
+#| echo: true
+
+nix-build
+
+```
+
+then
+
+```{bash}
+#| eval: false
+#| echo: true
+
+nix-shell
+
+```
+
 ## Remaining problems
 
 -   dependencies on external API (e.g. gbif, leaflet)
+
