@@ -1,5 +1,5 @@
 ---
-title: "Open, Reproducible and Transparent Science Course 2024"
+title: "Open, Reproducible and Transparent Science Course 2025"
 author: "Aud H. Halbritter and OS Course Team"
 format: 
   revealjs:
@@ -17,7 +17,7 @@ Network: kinosal
 Password: ***
 
 
-## Open Science courses
+## Open Science Courses
 
 Increase the awareness of Open Science principles in our community and provide education and teaching material on open science, reproducibility and transparency in ecology. We
 
@@ -32,10 +32,6 @@ Increase the awareness of Open Science principles in our community and provide e
 
 ![](pics/collab.png)
 
-## Funding
-
-![](pics/NSO.png)
-
 ## Aim of the OS course
 
 ![](pics/Data_cycle.png)
@@ -45,11 +41,18 @@ Increase the awareness of Open Science principles in our community and provide e
 
 ![](pics/course_2022.jpg)
 
-## OS course 2023 in Hjerkinn
+## OS course 2023 and 2024 in Hjerkinn
 
+::: columns
+::: column
 ![](pics/course_2023.png)
+:::
+::: column
+![](pics/course_2024.png)
+:::
+:::
 
-## OS course 2024 in Hjerkinn
+## OS course 2025 in Hjerkinn
 
 To do: group photo
 
@@ -61,32 +64,36 @@ To do: group photo
 | Day       | Topic                                |
 +===========+======================================+
 | Monday    | Arriving                             |
+|           | Introduction to OS    
 |           |                                      |
-|           | Introduction to OS                   |
+|           | Reproducible documents               |
 |           |                                      |
 |           | Present ourselves                    |
 +-----------+--------------------------------------+
-| Tuesday   | Reproducible documents               |
+| Tuesday   | Data handling / Using functions      |
 |           |                                      |
-|           | Data handling                        |
+|           | Intro to GBIF                        |
 |           |                                      |
 |           | Make an R package                    |
 +-----------+--------------------------------------+
-| Wednesday | Villrein and Excursion               |
+| Wednesday | Darwin Core, IPT, AI                 |
 |           |                                      |
-|           | Group photo                          |
+|           | Excursion + Group photo              |
 |           |                                      |
-|           | Publish and discover data            |
+|           | Publish data / Data biases           |
 |           |                                      |
 |           | Exercise reproducibility             |
 +-----------+--------------------------------------+
 | Thursday  | Reproducible workflows               |
 |           |                                      |
+|           | Best practice data analysis          |
+|           |                                      |
 |           | Systematic reviews and meta-analysis |
 +-----------+--------------------------------------+
 | Friday    | Using version control                |
 |           |                                      |
-|           | Work on own stuff                    |
+|           | Villrein center  Work on own stuff   |
+|           |                                      |
 +-----------+--------------------------------------+
 | Saturday  | Leaving                              |
 +-----------+--------------------------------------+
