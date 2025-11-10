@@ -12,9 +12,9 @@ execute:
 
 ## Wifi Password
 
-Network: kinosal
+Network: KinosalGuest
 
-Password: ***
+Password: MoskusGuest
 
 
 ## Open Science Courses
