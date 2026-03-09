@@ -11,6 +11,7 @@ project:
     - OS_2024/Systematic_Reviews/Systematic_Reviews.qmd
     - OS_2024/Systematic_Reviews/meta_analysis.qmd
     - functions.qmd
+    - larger-than-RAM.qmd
     - OS_2024/introduction_os/Gentle_introduction_OS_2024.qmd
     - OS_2024/Tools_approaches/Tools_Approaches_OS_2024.qmd
 
