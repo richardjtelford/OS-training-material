@@ -7,18 +7,21 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7fcc278e5cff05d3108fdca62cff0c71.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.20">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-996d885a942c9f10f868f457584061fa.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.23">
 
   <meta name="author" content="Richard J Telford">
-  <meta name="dcterms.date" content="2025-11-10">
-  <title>Will your code work in 2034?</title>
+  <meta name="dcterms.date" content="2026-03-09">
+  <title>Will your code work in 2036?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -97,7 +100,7 @@
     code span.vs { color: #008000; } /* VerbatimString */
     code span.wa { color: #696969; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -189,13 +192,17 @@
       margin-right: 0; 
     }
   </style>
+  <meta name="mermaid-theme" content="forest">
+  <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Will your code work in 2034?</h1>
+  <h1 class="title">Will your code work in 2036?</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -205,11 +212,11 @@ Richard J Telford
 </div>
 </div>
 
-  <p class="date">2025-11-10</p>
+  <p class="date">9 March 2026</p>
 </section>
 <section>
 <section id="everything-changes-your-code-changes-not" class="title-slide slide level1 center">
-<h1>Everything Changes, your code changes not</h1>
+<h1>Everything Changes,<br>your code changes not</h1>
 
 </section>
 <section id="r-changes" class="slide level2">
@@ -257,7 +264,8 @@ Richard J Telford
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-error">
-<pre><code>Error in opts(legend.position = "top"): could not find function "opts"</code></pre>
+<pre><code>Error in `opts()`:
+! could not find function "opts"</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -275,8 +283,8 @@ THEME SYSTEM
 <h2>Solutions</h2>
 
 <img data-src="intro-reproducible-environment_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="solution-0-naming-packages-used" class="slide level2">
-<h2>Solution 0: naming packages used</h2>
+<section id="solution-0-name-packages-used" class="slide level2">
+<h2>Solution 0: name packages used</h2>
 <blockquote>
 <p>values were analysed in R (R Core Team, 2017) using the qqman package (Turner, 2014).</p>
 </blockquote>
@@ -337,8 +345,8 @@ A BibTeX entry for LaTeX users is
 </div>
 </div>
 </section>
-<section id="solution-1-naming-packages-used" class="slide level2">
-<h2>Solution 1: naming packages used</h2>
+<section id="solution-1-name-version-of-packages" class="slide level2">
+<h2>Solution 1: name &amp; version of packages</h2>
 <blockquote>
 <p>Numerical analyses were carried out using R v. 2.15.3 (R Core Team 2013) using the vegan package v. 2.0-9 (Oksanen et al.&nbsp;2013).</p>
 </blockquote>
@@ -376,11 +384,11 @@ A BibTeX entry for LaTeX users is
 <li>Install packages with <code>renv::install()</code> (both CRAN and GitHub)</li>
 <li>Run <code>renv::status()</code></li>
 <li>Run <code>renv::snapshot()</code> to save changes or <code>renv::restore()</code> to revert</li>
-<li>Repeat 3–5</li>
+<li>Repeat 3–6</li>
 </ol>
 </section>
 <section id="using-someone-elses-project-with-renv" class="slide level2">
-<h2>Using someone elses project with <code>renv</code></h2>
+<h2>Using someone else’s project with <code>renv</code></h2>
 <ol type="1">
 <li>Clone the repo</li>
 <li>Open in RStudio</li>
@@ -397,37 +405,145 @@ A BibTeX entry for LaTeX users is
 </ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">tar_option_set</span>(</span>
-<span id="cb13-2"><a></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb13-3"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">tar_option_set</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><p>solution use <code>targets::tar_renv()</code></p></li>
 <li><p>solution use R file with <code>library()</code> calls</p></li>
-<li><p>Don’t forget to <code>renv::update()</code> packages to benefit from bugfixes.</p></li>
+<li><p>Don’t forget to <code>renv::update()</code> packages to get bugfixes.</p></li>
 </ul>
+</section>
+<section id="renv-limitations" class="slide level2">
+<h2><code>renv</code> limitations</h2>
+<p><code>renv</code> makes the list of packages available.</p>
+<p>Does nothing for the all the external dependencies.</p>
+<p>You want to reproduce a paper using R 3.6.3 …</p>
 </section>
 <section id="solution-3-containers" class="slide level2">
 <h2>Solution 3: Containers</h2>
-<p><code>renv</code> makes the list of packages available.</p>
-<p>Does nothing for the all the external dependencies.</p>
+<p>Virtual machines vs containers</p>
+<p>Containers</p>
 <ul>
 <li><p>docker</p></li>
-<li><p>Nix</p></li>
+<li><p>podman</p></li>
+<li><p>singularity</p></li>
 </ul>
+<p>Use for reproducibility, production, high-performance computers</p>
 </section>
-<section id="solution-3-rocker---docker-for-r" class="slide level2">
-<h2>Solution 3: Rocker - Docker for R</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://rocker-project.org/"><img data-src="https://rocker-project.org/img/rocker.png"></a></p>
-<figcaption>Rocker</figcaption>
-</figure>
+<section id="install-podman" class="slide level2">
+<h2>Install podman</h2>
+<p>Download and install podman from https://podman.io/</p>
+<p>Test it is working:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a></a><span class="ex">podman</span> run quay.io/podman/hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>!... Hello Podman World ...!
+
+         .--"--.           
+       / -     - \         
+      / (O)   (O) \        
+   ~~~| -=(,Y,)=- |         
+    .---. /`  \   |~~      
+ ~/  o  o \~~~~.----. ~~   
+  | =(X)= |~  / (O (O) \   
+   ~~~~~~~  ~| =(Y_)=-  |   
+  ~~~~    ~~~|   U      |~~ 
+
+Project:   https://github.com/containers/podman
+Website:   https://podman.io
+Desktop:   https://podman-desktop.io
+Documents: https://docs.podman.io
+YouTube:   https://youtube.com/@Podman
+X/Twitter: @Podman_io
+Mastodon:  @Podman_io@fosstodon.org</code></pre>
+</div>
+</div>
+</section>
+<section id="docker-images" class="slide level2">
+<h2>Docker images</h2>
+<p>Docker images are snapshots of a computer system</p>
+<p>Can be downloaded and used</p>
+<p>Images can be stacked</p>
+<p>Images have version control</p>
+</section>
+<section id="rocker---r-images-for-podman" class="slide level2">
+<h2>Rocker - R images for Podman</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell" data-reveal="true" data-fig-width="2" data-layout-align="default">
+<div class="cell-output-display">
+<div id="rocker">
+<div>
+<pre class="mermaid mermaid-js" data-label="rocker">flowchart BT
+  ubuntu([ubuntu])
+  rver([rocker/r-ver])
+  rstudio([rocker/rstudio])
+  tidyverse([rocker/tidyverse])
+  verse([rocker/verse])
+  geospatial([rocker/geospatial])
+  geospatial--&gt;verse--&gt;tidyverse--&gt;rstudio--&gt;rver--&gt;ubuntu
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p>Run with<br>
+<code>podman run --rm -ti -e PASSWORD=pass -p 8787:8787 docker.io/rocker/rstudio</code></p>
+<p>Open browser to http://localhost:8787</p>
+<ul>
+<li>Usename: root</li>
+<li>Password: pass (or whatever you set)</li>
+</ul>
+<p>Different R versions - <code>rocker/tidyverse:3.3.1</code></p>
+</div></div>
+</section>
+<section id="adding-files" class="slide level2">
+<h2>Adding files</h2>
+<p>use <code>-v</code> option to mount files</p>
+<p><code>podman run --rm -ti -v .:/root -e PASSWORD=pass -p 8787:8787 docker.io/rocker/rstudio</code></p>
+<p>Files edited in container will be updated outside.</p>
+<p>(Also possible to make files read-only)</p>
+</section>
+<section id="adding-packages" class="slide level2">
+<h2>Adding packages</h2>
+<p>Use <code>renv</code> to record dependencies</p>
+<ol type="1">
+<li><p>Make a new image with a dockerfile</p></li>
+<li><p>Add at start-up</p></li>
+</ol>
+</section>
+<section id="podman-compose" class="slide level2">
+<h2>Podman compose</h2>
+<p>Command line is too complex to want to write every time.</p>
+<p>compose a yaml file with the instructions</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb16-2"><a></a><span class="at">  </span><span class="fu">rstudio</span><span class="kw">:</span></span>
+<span id="cb16-3"><a></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"docker.io/rocker/rstudio"</span></span>
+<span id="cb16-4"><a></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb16-5"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8787:8787"</span></span>
+<span id="cb16-6"><a></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb16-7"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> bind</span></span>
+<span id="cb16-8"><a></a><span class="at">        </span><span class="fu">source</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb16-9"><a></a><span class="at">        </span><span class="fu">target</span><span class="kw">:</span><span class="at"> /home/rstudio</span></span>
+<span id="cb16-10"><a></a><span class="at">    </span><span class="fu">working_dir</span><span class="kw">:</span><span class="at"> /home/rstudio</span></span>
+<span id="cb16-11"><a></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb16-12"><a></a><span class="at">      </span><span class="kw">-</span><span class="at"> PASSWORD=yourpassword</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Run with</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a></a><span class="ex">podman</span> compose compose.yml up</span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="op">&lt;</span>!-- <span class="co"># close session with --&gt;</span></span>
+<span id="cb17-4"><a></a><span class="ex">podman</span> compose compose.yml down</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-4-nix---package-manager" class="slide level2">
 <h2>Solution 4: Nix - package manager</h2>
 <p>R interface with <code>rix</code> package</p>
+<p>Not dependent on existing docker images</p>
 <ul>
 <li>simplifies creating Nix expressions, which define reproducible environments.</li>
 <li>lets you work interactively in RStudio</li>
@@ -630,6 +746,11 @@ A BibTeX entry for LaTeX users is
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 1,
+
+        maxScale: 1.5,
+
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
@@ -743,13 +864,14 @@ A BibTeX entry for LaTeX users is
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
