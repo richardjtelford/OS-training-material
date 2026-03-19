@@ -644,6 +644,13 @@
     "text": "Biostats tutorial\nGo to this webpage: https://biostats-r.github.io/"
   },
   {
+    "objectID": "intro-reproducible-environment.html#section",
+    "href": "intro-reproducible-environment.html#section",
+    "title": "Will your code work in 2036?",
+    "section": "",
+    "text": "Data + code != reproducible\n\nData + code + environment = reproducible"
+  },
+  {
     "objectID": "intro-reproducible-environment.html#r-changes",
     "href": "intro-reproducible-environment.html#r-changes",
     "title": "Will your code work in 2036?",
@@ -697,7 +704,7 @@
     "href": "intro-reproducible-environment.html#finding-package-versions",
     "title": "Will your code work in 2036?",
     "section": "Finding package versions",
-    "text": "Finding package versions\n\nNumerical analyses were carried out using R v. `r getRversion()`\n(R Core Team 2013) using the vegan package v.`r packageVersion(\"vegan\")`\n(Oksanen et al. 2013).\n\nUsing pakret package\n\nNumerical analyses were carried out using `r pkrt(\"R\")`\nusing `r pkrt(\"vegan\")`."
+    "text": "Finding package versions\nNumerical analyses were carried out using R v. `{r} getRversion()`\n(R Core Team 2013) using the vegan package v.`{r} packageVersion(\"vegan\")`\n(Oksanen et al. 2013).\nUsing pakret package\nNumerical analyses were carried out using `{r} pkrt(\"R\")`\nusing `{r} pkrt(\"vegan\")`.\nNumerical analyses were carried out using R version 4.5.2 [@base] using the ‘vegan’ package version 2.7.2 [@vegan]."
   },
   {
     "objectID": "intro-reproducible-environment.html#solution-2-renv-for-reproducible-r-environment",
@@ -739,14 +746,14 @@
     "href": "intro-reproducible-environment.html#solution-3-containers",
     "title": "Will your code work in 2036?",
     "section": "Solution 3: Containers",
-    "text": "Solution 3: Containers\nVirtual machines vs containers\nContainers\n\ndocker\npodman\nsingularity\n\nUse for reproducibility, production, high-performance computers"
+    "text": "Solution 3: Containers\nVirtual machines vs containers\nContainers\n\ndocker\npodman\nsingularity/apptainer\n\nUse for reproducibility, production, high-performance computers"
   },
   {
     "objectID": "intro-reproducible-environment.html#install-podman",
     "href": "intro-reproducible-environment.html#install-podman",
     "title": "Will your code work in 2036?",
     "section": "Install podman",
-    "text": "Install podman\nDownload and install podman from https://podman.io/\nTest it is working:\n\npodman run quay.io/podman/hello\n\n!... Hello Podman World ...!\n\n         .--\"--.           \n       / -     - \\         \n      / (O)   (O) \\        \n   ~~~| -=(,Y,)=- |         \n    .---. /`  \\   |~~      \n ~/  o  o \\~~~~.----. ~~   \n  | =(X)= |~  / (O (O) \\   \n   ~~~~~~~  ~| =(Y_)=-  |   \n  ~~~~    ~~~|   U      |~~ \n\nProject:   https://github.com/containers/podman\nWebsite:   https://podman.io\nDesktop:   https://podman-desktop.io\nDocuments: https://docs.podman.io\nYouTube:   https://youtube.com/@Podman\nX/Twitter: @Podman_io\nMastodon:  @Podman_io@fosstodon.org"
+    "text": "Install podman\nDownload and install podman from https://podman.io/\nTest it is working:\n\n\nTerminal\n\n#| echo: true\npodman run quay.io/podman/hello"
   },
   {
     "objectID": "intro-reproducible-environment.html#docker-images",
@@ -760,35 +767,49 @@
     "href": "intro-reproducible-environment.html#rocker---r-images-for-podman",
     "title": "Will your code work in 2036?",
     "section": "Rocker - R images for Podman",
-    "text": "Rocker - R images for Podman\n\n\n\n\n\n\nflowchart BT\n  ubuntu([ubuntu])\n  rver([rocker/r-ver])\n  rstudio([rocker/rstudio])\n  tidyverse([rocker/tidyverse])\n  verse([rocker/verse])\n  geospatial([rocker/geospatial])\n  geospatial--&gt;verse--&gt;tidyverse--&gt;rstudio--&gt;rver--&gt;ubuntu\n\n\n\n\n\n\n\nRun with\npodman run --rm -ti -e PASSWORD=pass -p 8787:8787 docker.io/rocker/rstudio\nOpen browser to http://localhost:8787\n\nUsename: root\nPassword: pass (or whatever you set)\n\nDifferent R versions - rocker/tidyverse:3.3.1"
+    "text": "Rocker - R images for Podman\n\n\n\n\n\n\n---\nconfig:\n  flowchart:\n    padding: 10\n---\n\nflowchart BT\n  ubuntu([ubuntu---])\n  rver([rocker/r-ver-----])\n  rstudio([rocker/rstudio------])\n  tidyverse([rocker/tidyverse------])\n  verse([rocker/verse-----])\n  geospatial([rocker/geospatial------])\n  geospatial--&gt;verse--&gt;tidyverse--&gt;rstudio--&gt;rver--&gt;ubuntu\n\n\n\n\n\n\n\n\n\nTerminal\n\npodman run --rm -ti -e PASSWORD=pass \\\n  -p 8787:8787 docker.io/rocker/rstudio:4.5.3\n\n--rm remove image after use\n-ti interactive\n-e environmental variables\n-p port\ndocker.io registry\nrocker/rstudio:4.5.3 image & version tag\nOpen browser http://localhost:8787\nUsename: root\nPassword: pass (or whatever you set)"
   },
   {
     "objectID": "intro-reproducible-environment.html#adding-files",
     "href": "intro-reproducible-environment.html#adding-files",
     "title": "Will your code work in 2036?",
     "section": "Adding files",
-    "text": "Adding files\nuse -v option to mount files\npodman run --rm -ti -v .:/root -e PASSWORD=pass -p 8787:8787 docker.io/rocker/rstudio\nFiles edited in container will be updated outside.\n(Also possible to make files read-only)"
+    "text": "Adding files\nuse -v option to mount files\n\n\nTerminal\n\npodman run --rm -ti -v .:/root -e PASSWORD=pass -p 8787:8787 \\\n  docker.io/rocker/rstudio\n\nFiles edited in container will be updated outside.\n(Also possible to make files read-only)"
   },
   {
-    "objectID": "intro-reproducible-environment.html#adding-packages",
-    "href": "intro-reproducible-environment.html#adding-packages",
+    "objectID": "intro-reproducible-environment.html#adding-dependencies-with-renv",
+    "href": "intro-reproducible-environment.html#adding-dependencies-with-renv",
     "title": "Will your code work in 2036?",
-    "section": "Adding packages",
-    "text": "Adding packages\nUse renv to record dependencies\n\nMake a new image with a dockerfile\nAdd at start-up"
+    "section": "Adding dependencies with renv",
+    "text": "Adding dependencies with renv\nMake new image from a Dockerfile\n\n\nDockerfile\n\n# set base image\nFROM docker.io/rocker/tidyverse:4.5.3 \n# install renv into image\nRUN R -e \"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# copy renv lock into project & restore\nWORKDIR /root\nCOPY renv.lock renv.lock\nRUN R -e \"renv::restore()\"\n\nBuild Dockerfile into image with\n\n\nTerminal\n\npodman build -t thesis_image .\n\nRun the image with\n\n\nTerminal\n\npodman run -ti -v .:/root -p 8787:8787 thesis_image"
   },
   {
     "objectID": "intro-reproducible-environment.html#podman-compose",
     "href": "intro-reproducible-environment.html#podman-compose",
     "title": "Will your code work in 2036?",
     "section": "Podman compose",
-    "text": "Podman compose\nCommand line is too complex to want to write every time.\ncompose a yaml file with the instructions\n\nservices:\n  rstudio:\n    image: \"docker.io/rocker/rstudio\"\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - type: bind\n        source: .\n        target: /home/rstudio\n    working_dir: /home/rstudio\n    environment:\n      - PASSWORD=yourpassword\n\nRun with\n\npodman compose compose.yml up\n\n&lt;!-- # close session with --&gt;\npodman compose compose.yml down"
+    "text": "Podman compose\nCommand line is too complex to want to write every time.\n\n\ncompose.yml\n\nservices:\n  rstudio:\n    image: \"docker.io/rocker/rstudio:4.5.3\"\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - type: bind\n        source: .\n        target: /root\n    working_dir: /root\n    environment:\n      - PASSWORD=yourpassword\n\nRun with\n\n\nTerminal\n\npodman compose compose.yml up\n\n# close session with\npodman compose down"
+  },
+  {
+    "objectID": "intro-reproducible-environment.html#podman-desktop",
+    "href": "intro-reproducible-environment.html#podman-desktop",
+    "title": "Will your code work in 2036?",
+    "section": "Podman desktop",
+    "text": "Podman desktop\nUse for for starting, stopping and managing images."
   },
   {
     "objectID": "intro-reproducible-environment.html#solution-4-nix---package-manager",
     "href": "intro-reproducible-environment.html#solution-4-nix---package-manager",
     "title": "Will your code work in 2036?",
     "section": "Solution 4: Nix - package manager",
-    "text": "Solution 4: Nix - package manager\nR interface with rix package\nNot dependent on existing docker images\n\nsimplifies creating Nix expressions, which define reproducible environments.\nlets you work interactively in RStudio\nprovides helpers that make it easy to build those environments."
+    "text": "Solution 4: Nix - package manager\nNix language downloads packages\nR interface with rix package\n\nsimplifies creating Nix expressions, which define reproducible environments.\nlets you work interactively in RStudio"
+  },
+  {
+    "objectID": "intro-reproducible-environment.html#rix-example",
+    "href": "intro-reproducible-environment.html#rix-example",
+    "title": "Will your code work in 2036?",
+    "section": "Rix example",
+    "text": "Rix example\n\ninstall Nix\nUse rix to make Nix expression\n\n\nlibrary(rix)\n\nrix(\n  date = \"2025-02-28\", # set a date\n  r_pkgs = c(\"dplyr\", \"ggplot2\"), # List all the packages you need\n  ide = \"rstudio\", # List whatever editor you need\n  project_path = \".\",\n  overwrite = TRUE\n)\n\n\nBuild nix environment\n\n\n\nTerminal\n\nnix-build"
   },
   {
     "objectID": "intro-reproducible-environment.html#remaining-problems",
