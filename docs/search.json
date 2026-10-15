@@ -886,21 +886,21 @@
     "href": "reproducibility/exercise_reproducibility.html#data-and-code-availability",
     "title": "How reproducible is ecology?",
     "section": "Data and code availability",
-    "text": "Data and code availability\n\n\nCulina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763"
+    "text": "Data and code availability\n7 BES journals between 2017 and the end of 2024\n\n\n\nDoes the paper use data/code? If so, are they archived?\nWhere were the data/code archived?\nCan the archived data/code be located, downloaded and opened?\nWhat file extensions do the archived data/code files use?\nDo the archived data/code have a README (or equivalent)? If so, how useful is it?\nHow complete is the archived data?\nHow good is the code annotation?\nAre the data/code citable?\n\n\n\n\n\nCooper, N., & (2026). Data- and code-archiving in the British Ecological Society journals: Present status and recommendations for future improvements. Methods in Ecology and Evolution, 17, 1954–1966. https://doi.org/10.1111/2041-210x.70338"
   },
   {
     "objectID": "reproducibility/exercise_reproducibility.html#section",
     "href": "reproducibility/exercise_reproducibility.html#section",
     "title": "How reproducible is ecology?",
     "section": "",
-    "text": "Reviewed papers from 6 journals (2023-2025)\n\n\nFigure 1: Number of papers reviewed in 2023: 44, 2024: 59, 2025: 59"
+    "text": "Data and code availability (2023–2025)\n\n\nFigure 2: Data and code availability by year."
   },
   {
     "objectID": "reproducibility/exercise_reproducibility.html#section-1",
     "href": "reproducibility/exercise_reproducibility.html#section-1",
     "title": "How reproducible is ecology?",
     "section": "",
-    "text": "Data and code availability (2023–2025)\n\n\nFigure 2: Data and code availability by year."
+    "text": "2023–2025: data and code availability by journal\n\n\nFigure 3"
   },
   {
     "objectID": "reproducibility/exercise_reproducibility.html#section-2",
@@ -1300,5 +1300,54 @@
     "title": "Open, Reproducible and Transparent Science Course 2026",
     "section": "OS course",
     "text": "OS course"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#is-datacode-archived",
+    "href": "reproducibility/exercise_reproducibility.html#is-datacode-archived",
+    "title": "How reproducible is ecology?",
+    "section": "Is data/code archived?",
+    "text": "Is data/code archived?"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#located-downloaded-and-opened",
+    "href": "reproducibility/exercise_reproducibility.html#located-downloaded-and-opened",
+    "title": "How reproducible is ecology?",
+    "section": "Located, downloaded and opened?",
+    "text": "Located, downloaded and opened?"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#file-extensions",
+    "href": "reproducibility/exercise_reproducibility.html#file-extensions",
+    "title": "How reproducible is ecology?",
+    "section": "File extensions",
+    "text": "File extensions"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#readme",
+    "href": "reproducibility/exercise_reproducibility.html#readme",
+    "title": "How reproducible is ecology?",
+    "section": "Readme",
+    "text": "Readme"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#bes-journals-2017---2024",
+    "href": "reproducibility/exercise_reproducibility.html#bes-journals-2017---2024",
+    "title": "How reproducible is ecology?",
+    "section": "7 BES journals (2017 - 2024)",
+    "text": "7 BES journals (2017 - 2024)\n\n\n\nDoes the paper use data/code? If so, are they archived?\nWhere were the data/code archived?\nCan the archived data/code be located, downloaded and opened?\nWhat file extensions do the archived data/code files use?\nDo the archived data/code have a README (or equivalent)? If so, how useful is it?\nHow complete is the archived data?\nHow good is the code annotation?\nAre the data/code citable?\n\n\n\n\n\nCooper, N., & (2026). Data- and code-archiving in the British Ecological Society journals: Present status and recommendations for future improvements. Methods in Ecology and Evolution, 17, 1954–1966. https://doi.org/10.1111/2041-210x.70338"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#reviewed-papers-from-6-journals-2023-2025",
+    "href": "reproducibility/exercise_reproducibility.html#reviewed-papers-from-6-journals-2023-2025",
+    "title": "How reproducible is ecology?",
+    "section": "Reviewed papers from 6 journals (2023-2025)",
+    "text": "Reviewed papers from 6 journals (2023-2025)\n\n\nFigure 1: Number of papers reviewed in 2023: n = 44, 2024: n = 59, 2025: n = 59"
+  },
+  {
+    "objectID": "reproducibility/exercise_reproducibility.html#is-the-datacode-archived",
+    "href": "reproducibility/exercise_reproducibility.html#is-the-datacode-archived",
+    "title": "How reproducible is ecology?",
+    "section": "Is the data/code archived?",
+    "text": "Is the data/code archived?"
   }
 ]

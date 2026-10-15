@@ -23,18 +23,60 @@ The Turing Way community, used under a CC-BY 4.0 licence. DOI:
 10.5281/zenodo.3332807
 :::
 
-## Data and code availability
+## 7 BES journals (2017 - 2024)
 
-![](pics/availability.png)
+:::: {.columns}
 
-::: {style="font-size: 40%;"}
-Culina A, van den Berg I, Evans S, Sánchez-Tójar A (2020) Low availability of code in ecology: A call for urgent action. PLOS Biology 18(7): e3000763. https://doi.org/10.1371/journal.pbio.3000763
+::: {.column width="40%" style="font-size: 45%;"}
+- Does the paper use data/code? If so, are they archived?
+- Where were the data/code archived?
+- Can the archived data/code be located, downloaded and opened?
+- What file extensions do the archived data/code files use?
+- Do the archived data/code have a README (or equivalent)? If so, how useful is it?
+- How complete is the archived data?
+- How good is the code annotation?
+- Are the data/code citable?
+:::
+
+::: {.column width="50%"}
+![](pics/cooper_1.png)
+:::
+
+::::
+
+::: {style="font-size: 30%;"}
+Cooper, N., & (2026). Data- and code-archiving in the British Ecological Society journals: Present status and recommendations for future improvements. Methods in Ecology and Evolution, 17, 1954–1966. https://doi.org/10.1111/2041-210x.70338
 :::
 
 
-## 
+## Is the data/code archived?
 
-### Reviewed papers from 6 journals (2023-2025)
+:::: {.columns}
+
+::: {.column width="50%"}
+![](pics/cooper_2.jpg)
+:::
+
+::: {.column width="50%"}
+![](pics/cooper_3.jpg)
+:::
+
+::::
+
+## Located, downloaded and opened?
+
+![](pics/cooper_4.jpg)
+
+## File extensions
+
+![](pics/cooper_5.jpg)
+
+## Readme
+
+![](pics/cooper_6.jpg)
+
+
+## Reviewed papers from 6 journals (2023-2025)
 
 ```{r}
 #| label: setup
@@ -106,7 +148,7 @@ dat <- dat_raw |>
 
 # Precompute caption to avoid YAML parsing issues with !expr
 fig_cap_papers <- glue::glue(
-  "Number of papers reviewed in 2023: {nrow(dat_2023)}, 2024: {nrow(dat_2024)}, 2025: {nrow(dat_2025)}"
+  "Number of papers reviewed in 2023: n = {nrow(dat_2023)}, 2024: n = {nrow(dat_2024)}, 2025: n = {nrow(dat_2025)}"
 )
 
 ```
@@ -118,17 +160,15 @@ fig_cap_papers <- glue::glue(
 #| fig-cap: !expr fig_cap_papers
 
 
-# Count papers by Year and Journal
+# Count papers by Year and Journal (years side-by-side per journal)
 dat_raw |> 
   group_by(Year, Journal) |> 
   summarise(n = n(), .groups = "drop") |> 
-  ggplot(aes(x = Journal, y = n, fill = Journal)) +
-  geom_col() +
-  coord_flip() +
-  facet_wrap(~ Year, ncol = 1) +
-  labs(x = "", y = "Number of papers") +
+  ggplot(aes(x = n, y = Journal, fill = Year)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.75) +
+  labs(x = "Number of papers", y = "") +
   theme_bw() +
-  theme(legend.position = "none")
+  theme(legend.position = "bottom")
 
 ```
 
@@ -148,10 +188,10 @@ dat |>
   summarise(n = n(), .groups = "drop") |> 
   ggplot(aes(x = variable, y = n, fill = availability)) +
   geom_col(position = "dodge") +
-  facet_wrap(~ Year, ncol = 2) +
+  facet_wrap(~ Year, ncol = 1) +
   labs(x = "", y = "Number of papers") +
   theme_bw() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "right")
 
 ```
 
