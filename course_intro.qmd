@@ -23,11 +23,16 @@ execute:
 ![](pics/course_2025.jpeg){style="position: absolute; width: 43%; bottom: -2%; right: 8%; transform: rotate(-4deg); box-shadow: 0 8px 20px rgba(0,0,0,0.35); z-index: 5;"}
 :::
 
+## Collaboration
+
+::: {style="display: flex; justify-content: center; align-items: center; height: 80vh;"}
+![](pics/collab.png){style="max-height: 78vh; width: auto; margin: 0;"}
+:::
 
 ## Aim of the OS course
 
 ::: {style="display: flex; justify-content: center; align-items: center; height: 80vh;"}
-![](pics/Data_cycle.png){style="max-height: 78vh; width: auto; margin: 0;"}
+![](pics/Data_life_cycle.png){style="max-height: 78vh; width: auto; margin: 0;"}
 :::
 
 
@@ -40,13 +45,14 @@ execute:
 
 - Introduction to OS
 - Reproducible documents
-- *Present ourselves*
+- *Introductions*
 :::
 
 ::: {style="background: #f7fafc; border-radius: 12px; padding: 0.75em 0.9em; border-top: 5px solid #2f855a;"}
 **Tuesday**
 
 - Using version control
+- Using funcitions
 - Intro to GBIF, Darwin Core, IPT
 - *Make an R package*
 :::
@@ -72,7 +78,7 @@ execute:
 **Friday**
 
 - Data handling
-- Using functions
+- FAIR by design
 - Exercise
 :::
 
@@ -104,7 +110,7 @@ Password: ...
 ## Housekeeping
 
 - Room sharing -> see list
-- Help with meals prep and do dishes
+- Help with meals prep and do dishes -> check duty list
 - Packed lunches (prepare at breakfast)
 - We clean the place before leaving (Friday afternoon/evening, Saturday morning)
 - Sauna
