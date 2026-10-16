@@ -1349,5 +1349,54 @@
     "title": "How reproducible is ecology?",
     "section": "Is the data/code archived?",
     "text": "Is the data/code archived?"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#how-to-collaborate-with-others",
+    "href": "reproducibility/reproducible_workflows.html#how-to-collaborate-with-others",
+    "title": "Introduction to reproducible workflows",
+    "section": "How to collaborate with others?",
+    "text": "How to collaborate with others?\nHow do you get comments from co-authors?"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#how-to-get-comments-from-co-authors",
+    "href": "reproducibility/reproducible_workflows.html#how-to-get-comments-from-co-authors",
+    "title": "Introduction to reproducible workflows",
+    "section": "How to get comments from co-authors?",
+    "text": "How to get comments from co-authors?\nRender your mansucript to a word file. Manually add comments from co-authors to your qmd file."
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#in-an-ideal-world",
+    "href": "reproducibility/reproducible_workflows.html#in-an-ideal-world",
+    "title": "Introduction to reproducible workflows",
+    "section": "In an ideal world…",
+    "text": "In an ideal world…\n\nYour co-authors fork the repo\nThey read your manuscript (html version), make a PR with edits and comments.\nYou check the PR, accept the changes you want, and merge the PR to your main branch.\n\nBut, co-authors rarely have the skills to do this…"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#alternative-options---posit-cloud",
+    "href": "reproducibility/reproducible_workflows.html#alternative-options---posit-cloud",
+    "title": "Introduction to reproducible workflows",
+    "section": "Alternative options - posit cloud",
+    "text": "Alternative options - posit cloud"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#trackdown",
+    "href": "reproducibility/reproducible_workflows.html#trackdown",
+    "title": "Introduction to reproducible workflows",
+    "section": "Trackdown",
+    "text": "Trackdown"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#quarto-2-might-be-the-solution",
+    "href": "reproducibility/reproducible_workflows.html#quarto-2-might-be-the-solution",
+    "title": "Introduction to reproducible workflows",
+    "section": "Quarto 2 might be the solution",
+    "text": "Quarto 2 might be the solution"
+  },
+  {
+    "objectID": "reproducibility/reproducible_workflows.html#the-manual-way",
+    "href": "reproducibility/reproducible_workflows.html#the-manual-way",
+    "title": "Introduction to reproducible workflows",
+    "section": "The manual way",
+    "text": "The manual way\n\nRender your mansucript to a word file.\nShare the file with co-authors for review.\nManually add comments from co-authors to your qmd file."
   }
 ]
