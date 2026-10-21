@@ -18,7 +18,6 @@ editor: visual
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(ggplot2)
 theme_set(ggcharts::theme_hermit(grid = "XY"))
-
 ```
 
 ## Data handling & curation
@@ -40,15 +39,14 @@ Managing the "data life-cycle" within and beyond a project.
 ### {janitor}
 
 ```{r echo=TRUE}
-library(tidyverse) 
-library(palmerpenguins) 
-library(janitor)  
-palmerpenguins::penguins_raw |>  names() 
+library(tidyverse)
+library(palmerpenguins)
+library(janitor)
+palmerpenguins::penguins_raw |> names()
 ```
 
 ```{r}
-
-janitor::clean_names(palmerpenguins::penguins_raw) |>  names()
+janitor::clean_names(palmerpenguins::penguins_raw) |> names()
 ```
 
 ## 
@@ -56,7 +54,7 @@ janitor::clean_names(palmerpenguins::penguins_raw) |>  names()
 ### {dplyr}
 
 ```{r}
-clean_penguins<-janitor::clean_names(palmerpenguins::penguins_raw)  
+clean_penguins <- janitor::clean_names(palmerpenguins::penguins_raw)
 
 dplyr::glimpse(clean_penguins)
 ```
@@ -66,7 +64,7 @@ dplyr::glimpse(clean_penguins)
 ### {skimr}
 
 ```{r}
-out<-skimr::skim(palmerpenguins::penguins_raw) 
+out <- skimr::skim(palmerpenguins::penguins_raw)
 
 out
 ```
@@ -76,12 +74,13 @@ out
 ### {dplyr}
 
 ```{r}
-#Deduplication  
-data<-tibble(Day=c("Monday", "Tuesday","Wednesday", "Wednesday"), 
-             Person=c("Becks", "Amy", "Matt", "Matt"))
+# Deduplication
+data <- tibble(
+  Day = c("Monday", "Tuesday", "Wednesday", "Wednesday"),
+  Person = c("Becks", "Amy", "Matt", "Matt")
+)
 data
 data |> dplyr::distinct()
-
 ```
 
 ## 
@@ -89,13 +88,12 @@ data |> dplyr::distinct()
 ### {naniar}
 
 ```{r}
-
 # creating some data with missing values
-missing_penguins<-missMethods::delete_MCAR(clean_penguins, 0.3) 
+missing_penguins <- missMethods::delete_MCAR(clean_penguins, 0.3)
 
 
-missing_penguins |> 
-naniar::vis_miss()
+missing_penguins |>
+  naniar::vis_miss()
 ```
 
 ## Missing data
@@ -109,14 +107,14 @@ Missing data is normally a problem. Typically as ecologists we sweep missing dat
 If you have ever written some code like this:
 
 ```{r, eval=FALSE}
-# na.omit() 
-df <- na.omit(df)  
-# complete.cases() 
-df <- df[complete.cases(df), ]   
-# rowSums() 
-df <- df[rowSums(is.na(df)) == 0, ]   
-# drop_na() 
-df <- df  |>  tidyr::drop_na()
+# na.omit()
+df <- na.omit(df)
+# complete.cases()
+df <- df[complete.cases(df), ]
+# rowSums()
+df <- df[rowSums(is.na(df)) == 0, ]
+# drop_na()
+df <- df |> tidyr::drop_na()
 ```
 
 you are removing missing data (NAs) from your dataset.
@@ -218,73 +216,79 @@ Missing data patterns - MNAR
 ## What effect does missingness have?
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
-library(tidyverse, quietly = TRUE) 
-library(missMethods, quietly = TRUE) 
+library(tidyverse, quietly = TRUE)
+library(missMethods, quietly = TRUE)
 library(palmerpenguins)
 
-#create datasets with levels missingness
+# create datasets with levels missingness
 
-penguins_complete<-penguins |> 
+penguins_complete <- penguins |>
   drop_na()
 
-miss_penguins_MCAR<-
-  missMethods::delete_MCAR(penguins_complete, 
-                                             0.3, "flipper_length_mm") 
-# create a pattern of missingness with censoring 
-#(missing value in flipper_length 
-#if body_mass is below 30% quantile of body_mass)
+miss_penguins_MCAR <-
+  missMethods::delete_MCAR(
+    penguins_complete,
+    0.3, "flipper_length_mm"
+  )
+# create a pattern of missingness with censoring
+# (missing value in flipper_length
+# if body_mass is below 30% quantile of body_mass)
 
-miss_penguins_MAR<-
-  missMethods::delete_MAR_censoring(penguins_complete,
-                                                     0.3, "flipper_length_mm", "body_mass_g") 
-# create a pattern of missingness with censoring 
-#(missing value in flipper_length 
-#if flipper_length is below 30% quantile) 
+miss_penguins_MAR <-
+  missMethods::delete_MAR_censoring(
+    penguins_complete,
+    0.3, "flipper_length_mm", "body_mass_g"
+  )
+# create a pattern of missingness with censoring
+# (missing value in flipper_length
+# if flipper_length is below 30% quantile)
 
-miss_penguins_MNAR<-
-  missMethods::delete_MNAR_censoring(penguins_complete, 
-                                                       0.3, "flipper_length_mm")
+miss_penguins_MNAR <-
+  missMethods::delete_MNAR_censoring(
+    penguins_complete,
+    0.3, "flipper_length_mm"
+  )
 
-all_data<-bind_rows("Full"=penguins_complete, 
-                    "MCAR"= miss_penguins_MCAR,
-                    "MAR"= miss_penguins_MAR,
-                    "MNAR"=miss_penguins_MNAR, 
-                    .id="Missingness")
+all_data <- bind_rows(
+  "Full" = penguins_complete,
+  "MCAR" = miss_penguins_MCAR,
+  "MAR" = miss_penguins_MAR,
+  "MNAR" = miss_penguins_MNAR,
+  .id = "Missingness"
+)
 ```
 
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#plot the missing data function
+# plot the missing data function
 
-MDplot<-function(df_comp, df_mis, title){ df_comp$missX<-is.na(df_mis$flipper_length_mm) 
-ggplot(data=df_comp,aes(x=flipper_length_mm,y=body_mass_g, colour=missX))+ 
-  geom_point(alpha=0.2)+ geom_smooth(method = "lm")+
-  labs(x="Flipper length (mm)", y="Body mass (g)")+
-  scale_color_discrete(name="Missing data?")+ 
-  ggtitle(title)
-#+ theme_bw() 
+MDplot <- function(df_comp, df_mis, title) {
+  df_comp$missX <- is.na(df_mis$flipper_length_mm)
+  ggplot(data = df_comp, aes(x = flipper_length_mm, y = body_mass_g, colour = missX)) +
+    geom_point(alpha = 0.2) +
+    geom_smooth(method = "lm") +
+    labs(x = "Flipper length (mm)", y = "Body mass (g)") +
+    scale_color_discrete(name = "Missing data?") +
+    ggtitle(title)
+  #+ theme_bw()
 }
-
-
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-MDplot(penguins_complete, miss_penguins_MCAR, title="MCAR")
-
+MDplot(penguins_complete, miss_penguins_MCAR, title = "MCAR")
 ```
 
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-MDplot(penguins_complete, miss_penguins_MAR, title="MAR")
-
+MDplot(penguins_complete, miss_penguins_MAR, title = "MAR")
 ```
 
 ## 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-MDplot(penguins_complete, miss_penguins_MNAR, title="MNAR")
+MDplot(penguins_complete, miss_penguins_MNAR, title = "MNAR")
 ```
 
 ## What can we do about missing data?
@@ -303,21 +307,20 @@ library(mice, quietly = TRUE)
 set.seed(123)
 
 # Simulate data: location, year, count
-locations <- rep(1:5, each = 5)  # Assuming 5 locations
-years <- rep(2009:2023, 5)  # Assuming data for 5 years
-count <- round(rpois(25, lambda = 20))  # Simulated count data
+locations <- rep(1:5, each = 5) # Assuming 5 locations
+years <- rep(2009:2023, 5) # Assuming data for 5 years
+count <- round(rpois(25, lambda = 20)) # Simulated count data
 
 # Create a dataframe
 data <- data.frame(Location = locations, Year = years, Count = count)
 
 # Introduce missingness - Missing completely at random (MCAR)
-prop_missing <- 0.2  # Example: 20% missingness
+prop_missing <- 0.2 # Example: 20% missingness
 missing_indices <- sample(1:nrow(data), prop_missing * nrow(data))
 data$Count[missing_indices] <- NA
 
 # Check the structure of the data
 str(data)
-
 ```
 
 ## 
@@ -326,9 +329,7 @@ When we impute the missing data we use 5 replicates and then take the mean of al
 
 ```{r}
 # Impute missing data using MICE
-imp <- mice(data, m = 5, method = 'pmm', seed = 500)
-
-
+imp <- mice(data, m = 5, method = "pmm", seed = 500)
 ```
 
 ## 
@@ -337,21 +338,19 @@ imp <- mice(data, m = 5, method = 'pmm', seed = 500)
 # Analyse trends and variation in the original and imputed data
 # For illustration purposes, assuming a simple trend analysis
 original_trend <- aggregate(data$Count, by = list(data$Year), FUN = mean, na.rm = TRUE)
-names(original_trend)<-c("Year","Count")
-imputed_trend <- complete(imp, 'long')
+names(original_trend) <- c("Year", "Count")
+imputed_trend <- complete(imp, "long")
 imputed_trend <- aggregate(Count ~ Year, data = imputed_trend, FUN = mean)
 
 # Visualization of trends in original and imputed data
-plot_data<-bind_rows("original"=original_trend, "imputed"=imputed_trend, .id="Trend")
-
+plot_data <- bind_rows("original" = original_trend, "imputed" = imputed_trend, .id = "Trend")
 ```
 
 ```{r, echo=FALSE}
-plot_data |> 
-  ggplot(aes(Year, Count, colour=Trend))+
-  geom_point()+
+plot_data |>
+  ggplot(aes(Year, Count, colour = Trend)) +
+  geom_point() +
   geom_line()
-
 ```
 
 ## sem() instead of lm()
@@ -361,27 +360,26 @@ Using a Structured Equation Model (SEM) we can run a simple linear regression.
 ```{r, echo=TRUE,message=FALSE}
 library(lavaan)
 # we will use the Iris dataset for this example
-complete_model<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris)
+complete_model <- lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data = iris)
 
-iris_MCAR<-missMethods::delete_MCAR(iris, 0.3, "Sepal.Width")
+iris_MCAR <- missMethods::delete_MCAR(iris, 0.3, "Sepal.Width")
 
-miss_model1<-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris_MCAR)
-
+miss_model1 <- lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data = iris_MCAR)
 ```
 
 ```{r, echo=FALSE,message=FALSE, warning=FALSE}
 library(stargazer, quietly = TRUE)
-stargazer(complete_model, miss_model1, 
-          star.cutoffs = c(.05, .01, .001), 
-  no.space = T, type = 'text')
+stargazer(complete_model, miss_model1,
+  star.cutoffs = c(.05, .01, .001),
+  no.space = T, type = "text"
+)
 ```
 
 ## 
 
 ```{r, message=FALSE, warning=FALSE}
-miss_model2 <- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris_MCAR, missing="ML")
+miss_model2 <- sem("Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length", data = iris_MCAR, missing = "ML")
 summary(miss_model2)
-
 ```
 
 Adding the argument 'missing = "ML"' to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used.
@@ -389,20 +387,21 @@ Adding the argument 'missing = "ML"' to the sem() function estimates a likelihoo
 ## Data validation
 
 ```{r}
-library(data.validator)  
-report <- data_validation_report()  
+library(data.validator)
+report <- data_validation_report()
 
 between <- function(a, b) {
-  function(x) { a <= x & x <= b }
+  function(x) {
+    a <= x & x <= b
+  }
 }
 
-validate(iris, name = "Verifying flower dataset") |> 
-  validate_if(Sepal.Length > 0, description = "Sepal length is greater than 0") |> 
-  validate_cols(between(0, 4), Sepal.Width, description = "Sepal width is between 0 and 4") |> 
+validate(iris, name = "Verifying flower dataset") |>
+  validate_if(Sepal.Length > 0, description = "Sepal length is greater than 0") |>
+  validate_cols(between(0, 4), Sepal.Width, description = "Sepal width is between 0 and 4") |>
   add_results(report)
 
 print(report)
-
 ```
 
 ## 
@@ -416,9 +415,9 @@ print(report)
 Look at the messy data dataset. How would you go about cleaning this dataset?
 
 ```{r}
-messy_data <- readRDS(here::here("data_handling/data/messy_data.RDS")) 
+messy_data <- readRDS(here::here("data_handling/data/messy_data.RDS"))
 
-messy_data |> data.table::data.table() 
+messy_data |> data.table::data.table()
 ```
 
 ## Data wrangling
@@ -428,22 +427,21 @@ messy_data |> data.table::data.table()
 ## Transform to long format
 
 ```{r}
-library(tidyverse) 
-# this avoids tidyverse conflicts with the base function filter 
-conflicted::conflict_prefer("filter", "dplyr") 
-# Pivot longer  
+library(tidyverse)
+# this avoids tidyverse conflicts with the base function filter
+conflicted::conflict_prefer("filter", "dplyr")
+# Pivot longer
 penguins_long <- palmerpenguins::penguins |>
-  pivot_longer(contains("_"),names_to = c("part", "measure" , "unit"),names_sep = "_")  
+  pivot_longer(contains("_"), names_to = c("part", "measure", "unit"), names_sep = "_")
 
-penguins_long 
-
+penguins_long
 ```
 
 ## Transform to wide format
 
 ```{r}
 penguins_long |>
-  pivot_wider(names_from = species, values_from = value) 
+  pivot_wider(names_from = species, values_from = value)
 ```
 
 ## What's going on?
@@ -452,8 +450,8 @@ No identifier for each observation so R puts all the values in a list. To solve 
 
 ```{r}
 penguins_long |>
-  mutate(sample=row_number()) |>
-  pivot_wider(names_from = species,values_from = value) 
+  mutate(sample = row_number()) |>
+  pivot_wider(names_from = species, values_from = value)
 ```
 
 ## Tidy data
@@ -532,17 +530,14 @@ writeLines(code, "bad_style.R")
 
 # Run lintr on the newly created file
 lint("bad_style.R")
-
 ```
 
 ## 
 
 ```{r}
-library("styler") 
+library("styler")
 style_file("bad_style.R")
 readLines("bad_style.R")
-
-
 ```
 
 ## What I think...
